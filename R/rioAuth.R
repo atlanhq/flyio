@@ -4,7 +4,7 @@
 #' @param data_source default to local. Possible options : gcs, s3, local. Case insensitive
 #' @param scope the scope of the auth if gcs. Default https://www.googleapis.com/auth/devstorage.full_control
 #' @export "rioAuth"
-#' @import "googleCloudStorageR", "stringr", "aws.s3", "assertthat"
+#' @import "googleCloudStorageR" "stringr" "aws.s3" "assertthat"
 #' @examples
 #' rioAuth()
 #'
