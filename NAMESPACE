@@ -3,6 +3,7 @@
 export("rioAuth")
 export("rioGetBucket")
 export("rioGetDataSource")
+export("rioListFiles")
 export("rioSetBucket")
 export("rioSetDataSource")
 import("assertthat")
