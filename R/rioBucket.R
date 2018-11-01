@@ -12,9 +12,14 @@ rioSetBucket <- function(bucket, data_source = rioGetDataSource()){
   assert_that(is.string(bucket) && bucket != "", msg = "Enter a valid bucket name")
   assert_that(str_to_lower(data_source) %in% c("gcs", "s3", "local"), msg = "Enter a valid data source")
   data_source = str_to_title(data_source)
-  global_env_bucket = paste0("rioBucket",data_source)
-  Sys.setenv(global_env_bucket = bucket)
-  message("Default bucket name set to '",bucket,"'")
+  if(data_source == "Gcs"){
+    Sys.setenv("rioBucketGcs" = bucket)
+  } else if(data_source == "S3"){
+    Sys.setenv("rioBucketS3" = bucket)
+  } else if(data_source == "Local"){
+    Sys.setenv("rioBucketLocal" = bucket)
+  }
+  message("Default bucket name for ",data_source ," set to '",bucket,"'")
 }
 
 #' Get global bucket name for rIO
