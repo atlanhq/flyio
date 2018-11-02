@@ -1,12 +1,23 @@
 Package: rIO
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Read/Write any format from anywhere
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Himanshu Sikaria [aut, cre]
+Maintainer: Himanshu Sikaria <himanshu.sikaria@socialcops.com>
+Description: Perform input, outout of files in R from any data source like Google Cloud Storage, AWS S3 or local drive.
+URL: https://github.com/socialcopsdev/rIO
+BugReports: https://github.com/socialcopsdev/rIO/issues
+License: Private
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
+Depends: R (>= 3.1.2)
+Imports: 
+    stringr,
+    assertthat,
+    googleCloudStorageR,
+    aws.s3,
+    dplyr,
+    readr,
+    utils,
+    tools
