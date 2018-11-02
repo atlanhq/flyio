@@ -22,6 +22,6 @@ Check if a file exists
 }
 \examples{
 rioSetDataSource("gcs")
-rioSetBucket("statlas-test")
+rioSetBucket("socialcops-test")
 rioFileExists(path = "tests/mtcars.csv")
 }

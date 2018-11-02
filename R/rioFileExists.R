@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' rioSetDataSource("gcs")
-#' rioSetBucket("statlas-test")
+#' rioSetBucket("socialcops-test")
 #' rioFileExists(path = "tests/mtcars.csv")
 
 rioFileExists <- function(path,  data_source = rioGetDataSource(), bucket = rioGetBucket(data_source)){
