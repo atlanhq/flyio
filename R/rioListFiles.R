@@ -30,7 +30,7 @@ rioListFiles <- function(path = "", pattern = NULL, recursive = FALSE,
 
   # getting the vector of all the filenames, with path as prefix
   path = gsub("\\/+","/",path)
-  path = gsub("^\\/|^\\.\\/","",path)
+  path = gsub("^\\/|^\\.\\/|^\\.","",path)
   if(data_source == "gcs"){
     obj = gcs_list_objects(bucket = bucket, detail = "summary", prefix = path)$name
   } else if(data_source == "s3"){
