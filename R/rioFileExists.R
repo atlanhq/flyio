@@ -21,7 +21,10 @@ rioFileExists <- function(path,  data_source = rioGetDataSource(), bucket = rioG
     return(file.exists(path))
   }
   tryCatch({
-    obj = rioListFiles(path = dirname(path), recursive = T,
+    dir_path = dirname(path)
+    dir_path = gsub("\\/+","/",dir_path)
+    dir_path = gsub("^\\/|^\\.\\/|^\\.","",dir_path)
+    obj = rioListFiles(path = dir_path, recursive = T,
                        data_source = data_source, bucket = bucket)
   }, error = function(err){
     print(err)
