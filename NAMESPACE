@@ -3,6 +3,7 @@
 export("rioAuth")
 export("rioFileDownload")
 export("rioFileExists")
+export("rioFileUpload")
 export("rioGetBucket")
 export("rioGetDataSource")
 export("rioListFiles")
