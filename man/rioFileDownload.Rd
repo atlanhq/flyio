@@ -12,7 +12,7 @@ rioFileDownload(bucketpath, localfile, data_source = rioGetDataSource(),
 
 \item{localfile}{path where the file needs to be downloaded. The filename and extension also needs to be present, if not the current file name will be considered}
 
-\item{data_source}{the name of the data source, if not set globally}
+\item{data_source}{the name of the data source, if not set globally, gcs or s3}
 
 \item{bucket}{the name of the bucket, if not set globally}
 
@@ -21,7 +21,7 @@ rioFileDownload(bucketpath, localfile, data_source = rioGetDataSource(),
 \item{...}{other parameters for gcs_get_object or save_object}
 }
 \value{
-logical. if the operation was successful or not
+the filename and path of the object saved to local
 }
 \description{
 Save a single file from the cloud to your local drive
