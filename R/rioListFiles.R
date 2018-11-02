@@ -53,6 +53,7 @@ rioListFiles <- function(path = "", pattern = NULL, recursive = FALSE,
   }
   if(!isTRUE(full.names)){
     obj = sub(paste0("^",path),"",obj)
+    obj = gsub("^.*?\\/","", obj)
   }
   return(obj)
 }
