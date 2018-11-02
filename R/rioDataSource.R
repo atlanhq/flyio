@@ -1,6 +1,6 @@
 #' Set global DataSource name for rIO
 #' @description Set global DataSource name to be used for all the function in rIO
-#' @param DataSource the DataSource name to be set
+#' @param data_source the DataSource name to be set
 #'
 #' @return stores the DataSource name in a global environment under rioDataSource
 #' @export "rioSetDataSource"

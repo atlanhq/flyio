@@ -7,7 +7,7 @@
 rioSetDataSource(data_source)
 }
 \arguments{
-\item{DataSource}{the DataSource name to be set}
+\item{data_source}{the DataSource name to be set}
 }
 \value{
 stores the DataSource name in a global environment under rioDataSource
