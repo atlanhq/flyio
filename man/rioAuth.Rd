@@ -4,7 +4,7 @@
 \alias{rioAuth}
 \title{Authenticate rIO}
 \usage{
-rioAuth(auth_list = "", data_source = c("local", "gcs", "s3")[1],
+rioAuth(auth_list = "", data_source = rioGetDataSource(),
   scope = "https://www.googleapis.com/auth/devstorage.full_control")
 }
 \arguments{
@@ -18,6 +18,7 @@ rioAuth(auth_list = "", data_source = c("local", "gcs", "s3")[1],
 Authenticate any of the cloud storage platforms to perform any I/O
 }
 \examples{
+rioSetDataSource("local")
 rioAuth()
 
 }

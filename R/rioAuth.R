@@ -6,11 +6,12 @@
 #' @export "rioAuth"
 #' @import "googleCloudStorageR" "stringr" "aws.s3" "assertthat" "utils" "tools"
 #' @examples
+#' rioSetDataSource("local")
 #' rioAuth()
 #'
 
 
-rioAuth <- function(auth_list = "", data_source = c("local", "gcs", "s3")[1],
+rioAuth <- function(auth_list = "", data_source = rioGetDataSource(),
                    scope = "https://www.googleapis.com/auth/devstorage.full_control"){
 
   # checking if data_source input is valid
