@@ -21,7 +21,9 @@ logical. if the file exists or not
 Check if a file exists
 }
 \examples{
+\dontrun{
 rioSetDataSource("gcs")
 rioSetBucket("socialcops-test")
 rioFileExists(path = "tests/mtcars.csv")
+}
 }

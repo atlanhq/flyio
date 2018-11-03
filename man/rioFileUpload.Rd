@@ -25,8 +25,9 @@ the filename and path of the file in the bucket
 Write a local file to the cloud, S3 or GCS
 }
 \examples{
+\dontrun{
 rioSetDataSource("gcs")
 rioSetBucket("socialcops-test")
 rioFileUpload("~/Downloads/dsada.csv", "tests/mtcars.csv")
-
+}
 }

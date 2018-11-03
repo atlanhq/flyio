@@ -30,8 +30,9 @@ a vector of full file names
 list the files in cloud or locally - similar to list.files()
 }
 \examples{
+\dontrun{
 rioSetDataSource("s3")
 rioSetBucket("socialcops-test")
 gcsListFiles(path = "tests/", pattern = ".*csv")
-
+}
 }

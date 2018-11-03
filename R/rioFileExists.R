@@ -8,9 +8,11 @@
 #' @return logical. if the file exists or not
 #'
 #' @examples
+#' \dontrun{
 #' rioSetDataSource("gcs")
 #' rioSetBucket("socialcops-test")
 #' rioFileExists(path = "tests/mtcars.csv")
+#' }
 
 rioFileExists <- function(path,  data_source = rioGetDataSource(), bucket = rioGetBucket(data_source)){
   # getting the vector of all the files

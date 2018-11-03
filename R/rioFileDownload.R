@@ -12,9 +12,11 @@
 #' @export "rioFileDownload"
 #' @import "googleCloudStorageR" "aws.s3" "stringr" "assertthat"
 #' @examples
+#' \dontrun{
 #' rioSetDataSource("gcs")
 #' rioSetBucket("socialcops-test")
 #' rioFileDownload("mtcars.csv", "~/Downloads/dsada.csv", overwrite = T)
+#' }
 
 rioFileDownload <- function(bucketpath, localfile, data_source = rioGetDataSource(),
                             bucket = rioGetBucket(data_source),  overwrite = TRUE, ...){

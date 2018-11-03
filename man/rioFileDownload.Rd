@@ -27,7 +27,9 @@ the filename and path of the object saved to local
 Save a single file from the cloud to your local drive
 }
 \examples{
+\dontrun{
 rioSetDataSource("gcs")
 rioSetBucket("socialcops-test")
 rioFileDownload("mtcars.csv", "~/Downloads/dsada.csv", overwrite = T)
+}
 }

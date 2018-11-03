@@ -12,10 +12,11 @@
 #' @return a vector of full file names
 #' @import "googleCloudStorageR" "aws.s3" "stringr"
 #' @examples
+#' \dontrun{
 #' rioSetDataSource("s3")
 #' rioSetBucket("socialcops-test")
 #' gcsListFiles(path = "tests/", pattern = ".*csv")
-#'
+#' }
 
 rioListFiles <- function(path = "", pattern = NULL, recursive = FALSE,
                          ignore.case = FALSE, full.names = TRUE,

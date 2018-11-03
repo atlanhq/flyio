@@ -10,10 +10,11 @@
 #' @return the filename and path of the file in the bucket
 #' @import "googleCloudStorageR" "aws.s3" "assertthat"
 #' @examples
+#' \dontrun{
 #' rioSetDataSource("gcs")
 #' rioSetBucket("socialcops-test")
 #' rioFileUpload("~/Downloads/dsada.csv", "tests/mtcars.csv")
-#'
+#' }
 
 rioFileUpload <- function(localfile, bucketpath, data_source = rioGetDataSource(),
                           bucket = rioGetBucket(data_source), ...){
