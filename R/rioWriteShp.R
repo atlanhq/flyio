@@ -1,0 +1,45 @@
+#' Write shapefiles
+#'
+#' @param obj R object to be written
+#' @param dsn path of the file to be read
+#' @param layer the name of the shapefile without extension
+#' @param FUN the function using which the file is to be read
+#' @param dsnlayerbind if the FUN needs dsn and layer binded or not
+#' @param data_source the name of the data source, if not set globally. s3, gcs or local
+#' @param bucket the name of the bucket, if not set globally
+#' @param ... other parameters for the FUN function defined above
+#' @export "rioWriteShp"
+#' @return output of the FUN function if any
+#'
+#' @examples
+#' \dontrun{
+#' rioSetDataSource("gcs")
+#' rioSetBucket("socialcops-test")
+#' rioWriteShp(t, "tests/shptest/", "new", driver = "ESRI Shapefile", overwrite = T)
+#' }
+
+
+rioWriteShp <- function(obj, dsn, layer, FUN = rgdal::writeOGR, dsnlayerbind = F, data_source = rioGetDataSource(),
+                        bucket = rioGetBucket(data_source), ...){
+  dsnlayer = gsub("\\/+","/", paste0(dsn,"/",layer))
+  if(data_source == "local"){
+    if(dsnlayerbind == F){
+      result = FUN(obj, dsn, layer, ...)
+    } else{
+      result = FUN(obj, dsnlayer, ...)
+    }
+    return(invisible(result))
+  }
+  result = FUN(obj, tempdir(), layer, ...)
+  shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
+  # downloading the file
+  for(i in shpfiles){
+    # a tempfile with the required extension
+    temp <- paste0(tempdir(), "/", i)
+    on.exit(unlink(temp))
+    # downloading the file
+    downlogical = rioFileUpload(localfile = temp, bucketpath = paste0(dsnlayer, ".", tools::file_ext(i)),
+                                bucket = bucket)
+  }
+}
+
