@@ -1,5 +1,5 @@
 # rIO <img src="wiki/logo.png" align="right" />
-Input Output data from R - Download, upload, read, write objects from AWS S3, GoogleCloudStorage or local file system with a single interface.
+Input Output data from R - Download, upload, read, write objects from AWS S3, GoogleCloudStorage or local file system with a single interface. Read the manual [here]("wiki/rIO-manual.pdf")
 
 ## Overview
 
@@ -40,7 +40,7 @@ library(rIO)
 
 ### Example
 
-```
+``` r
 # Setting the data source
 rioSetDataSource("gcs")
 
