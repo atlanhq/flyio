@@ -17,7 +17,5 @@ Imports:
     assertthat,
     googleCloudStorageR,
     aws.s3,
-    dplyr,
-    readr,
     utils,
     tools
