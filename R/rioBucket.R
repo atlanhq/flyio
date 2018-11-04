@@ -30,7 +30,11 @@ rioSetBucket <- function(bucket, data_source = rioGetDataSource()){
 #' @export "rioGetBucket"
 #' @import "stringr"
 #'
-#' @examples rioGetBucket(data_source = "S3")
+#' @examples
+#' # first setting the bucket for a data source
+#' rioSetBucket(bucket = "socialcops-test", data_source = "S3")
+#' # retrieving the bucket for S3
+#' rioGetBucket(data_source = "S3")
 rioGetBucket <- function(data_source = rioGetDataSource()){
   assert_that(str_to_lower(data_source) %in% c("gcs", "s3", "local"), msg = "Enter a valid data source")
   data_source = str_to_title(data_source)

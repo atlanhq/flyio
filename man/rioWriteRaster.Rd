@@ -2,7 +2,7 @@
 % Please edit documentation in R/rioWriteRaster.R
 \name{rioWriteRaster}
 \alias{rioWriteRaster}
-\title{Write raster to GCS}
+\title{Write raster}
 \usage{
 rioWriteRaster(x, file, FUN = raster::writeRaster,
   data_source = rioGetDataSource(), bucket = rioGetBucket(data_source),
@@ -25,7 +25,7 @@ rioWriteRaster(x, file, FUN = raster::writeRaster,
 No output
 }
 \description{
-Write raster to GCS
+Write raster
 }
 \examples{
 \dontrun{

@@ -13,5 +13,8 @@ the string - DataSource name stored
 Get global data source name to be used for all the function in rIO. Returns the value stored using rioSetDataSource
 }
 \examples{
+# first setting the data source
+rioSetDataSource("s3")
+# getting the data source
 rioGetDataSource()
 }

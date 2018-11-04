@@ -1,4 +1,4 @@
-#' Write raster to GCS
+#' Write raster
 #' @param x variable name
 #' @param file path of the file to be written to
 #' @param FUN the function using which the file is to write

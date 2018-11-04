@@ -19,5 +19,8 @@ Get global bucket name to be used for all the function in rIO
 if the data source is local, then an empty string is returned
 }
 \examples{
+# first setting the bucket for a data source
+rioSetBucket(bucket = "socialcops-test", data_source = "S3")
+# retrieving the bucket for S3
 rioGetBucket(data_source = "S3")
 }

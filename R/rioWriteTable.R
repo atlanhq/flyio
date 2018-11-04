@@ -1,4 +1,4 @@
-#' Write csv, Excel files, txt to GCS
+#' Write csv, Excel files, txt
 #'
 #' @param x variable name
 #' @param file path of the file to be written to

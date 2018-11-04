@@ -2,7 +2,7 @@
 % Please edit documentation in R/rioWriteTable.R
 \name{rioWriteTable}
 \alias{rioWriteTable}
-\title{Write csv, Excel files, txt to GCS}
+\title{Write csv, Excel files, txt}
 \usage{
 rioWriteTable(x, file, FUN = write.csv,
   data_source = rioGetDataSource(), bucket = rioGetBucket(data_source),
@@ -25,7 +25,7 @@ rioWriteTable(x, file, FUN = write.csv,
 No output
 }
 \description{
-Write csv, Excel files, txt to GCS
+Write csv, Excel files, txt
 }
 \examples{
 \dontrun{

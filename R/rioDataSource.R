@@ -18,7 +18,11 @@ rioSetDataSource <- function(data_source){
 #' @return the string - DataSource name stored
 #' @export "rioGetDataSource"
 #'
-#' @examples rioGetDataSource()
+#' @examples
+#' # first setting the data source
+#' rioSetDataSource("s3")
+#' # getting the data source
+#' rioGetDataSource()
 rioGetDataSource <- function(){
   data_source = Sys.getenv("rioDataSource")
   invisible(assert_that(is.string(data_source) && data_source != "", msg = "No data source set. Use rioSetDataSource to set the data source."))
