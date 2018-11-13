@@ -19,9 +19,15 @@
 #' }
 
 
-rioWriteShp <- function(obj, dsn, layer, FUN = rgdal::writeOGR, dsnlayerbind = F, data_source = rioGetDataSource(),
+rioWriteShp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, data_source = rioGetDataSource(),
                         bucket = rioGetBucket(data_source), ...){
   dsnlayer = gsub("\\/+","/", paste0(dsn,"/",layer))
+  l <- list(...)
+  if(identical(FUN, rgdal::writeOGR) & is.null(l$driver)){
+    FUN <- function(...){
+      rgdal::writeOGR(..., driver = "ESRI Shapefile")
+    }
+  }
   if(data_source == "local"){
     if(dsnlayerbind == F){
       result = FUN(obj, dsn, layer, ...)
@@ -30,7 +36,12 @@ rioWriteShp <- function(obj, dsn, layer, FUN = rgdal::writeOGR, dsnlayerbind = F
     }
     return(invisible(result))
   }
-  result = FUN(obj, tempdir(), layer, ...)
+  if(dsnlayerbind == F){
+    result = FUN(obj, tempdir(), layer, ...)
+  } else{
+    tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer))
+    result = FUN(obj, tmplayer, ...)
+  }
   shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
   # downloading the file
   for(i in shpfiles){
