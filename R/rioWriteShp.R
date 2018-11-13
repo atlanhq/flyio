@@ -1,8 +1,7 @@
 #' Write shapefiles
 #'
 #' @param obj R object to be written
-#' @param dsn path of the file to be read
-#' @param layer the name of the shapefile without extension
+#' @param pathshp the path of the shapefile, may or may not include the extension
 #' @param FUN the function using which the file is to be read
 #' @param dsnlayerbind if the FUN needs dsn and layer binded or not
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
@@ -21,6 +20,9 @@
 
 rioWriteShp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, data_source = rioGetDataSource(),
                         bucket = rioGetBucket(data_source), ...){
+  filename = basename(pathshp)
+  layer = gsub(paste0("\\.",tools::file_ext(pathshp),"$"), "", filename)
+  dsn = gsub(paste0(filename,"$"),"", pathshp)
   dsnlayer = gsub("\\/+","/", paste0(dsn,"/",layer))
   l <- list(...)
   if(identical(FUN, rgdal::writeOGR) & is.null(l$driver)){
