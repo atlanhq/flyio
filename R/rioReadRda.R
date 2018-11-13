@@ -19,7 +19,7 @@ rioReadRda <- function(file, FUN = load, data_source = rioGetDataSource(),
                        bucket = rioGetBucket(data_source), ...){
 
   # checking if the file is valid
-  assert_that(tools::file_ext(file) %in% c("rds", "RData"), msg = "Please input a valid path")
+  assert_that(tools::file_ext(file) %in% c("rda", "RData"), msg = "Please input a valid path")
   if(data_source == "local"){
     FUN(file, ...)
     return(t)
