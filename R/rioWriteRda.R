@@ -29,7 +29,7 @@ rioWriteRda <- function(..., file, FUN = save, data_source = rioGetDataSource(),
   on.exit(unlink(temp))
   # loading the file to the memory using user defined function
   file = gsub("\\/+","/",file)
-  FUN(..., temp)
+  FUN(..., file = temp)
   # downloading the file
   rioFileUpload(localfile = temp, bucketpath = file, data_source = data_source, bucket = bucket)
 
