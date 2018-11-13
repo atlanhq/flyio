@@ -5,7 +5,7 @@
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param bucket the name of the bucket, if not set globally
 #' @param ... other parameters for the FUN function defined above
-#' @export "rioReadRds"
+#' @export "rioReadRda"
 #' @return the output of the FUN function
 #'
 #' @examples
