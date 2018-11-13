@@ -21,7 +21,7 @@
 rioReadShp <- function(dsn, layer, FUN = rgdal::readOGR, dsnlayerbind = F, data_source = rioGetDataSource(),
                        bucket = rioGetBucket(data_source), ...){
   shpfiles = rioListFiles(path = dsn, pattern = paste0(layer,"."), data_source = data_source, bucket = bucket)
-  shpfiles = grep("dbf|prj|shp|shx", shpfiles, value = T)
+  shpfiles = grep("dbf|prj|shp|shx|cpg|qpj", shpfiles, value = T)
   if(data_source == "local"){
     if(!isTRUE(dsnlayerbind)){
       result = FUN(dsn, layer, ...)

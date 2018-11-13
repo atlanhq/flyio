@@ -45,7 +45,7 @@ rioWriteShp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, d
     result = FUN(obj, tmplayer, ...)
   }
   shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
-  shpfiles = grep("dbf|prj|shp|shx", shpfiles, value = T)
+  shpfiles = grep("dbf|prj|shp|shx|cpg|qpj", shpfiles, value = T)
   # downloading the file
   for(i in shpfiles){
     # a tempfile with the required extension
