@@ -4,16 +4,14 @@
 \alias{rioWriteShp}
 \title{Write shapefiles}
 \usage{
-rioWriteShp(obj, dsn, layer, FUN = rgdal::writeOGR, dsnlayerbind = F,
+rioWriteShp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
   data_source = rioGetDataSource(), bucket = rioGetBucket(data_source),
   ...)
 }
 \arguments{
 \item{obj}{R object to be written}
 
-\item{dsn}{path of the file to be read}
-
-\item{layer}{the name of the shapefile without extension}
+\item{pathshp}{the path of the shapefile, may or may not include the extension}
 
 \item{FUN}{the function using which the file is to be read}
 
