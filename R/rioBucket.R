@@ -14,12 +14,14 @@ rioSetBucket <- function(bucket, data_source = rioGetDataSource()){
   data_source = str_to_title(data_source)
   if(data_source == "Gcs"){
     Sys.setenv("rioBucketGcs" = bucket)
+    message("Default bucket name for ",data_source ," set to '",bucket,"'")
   } else if(data_source == "S3"){
     Sys.setenv("rioBucketS3" = bucket)
+    message("Default bucket name for ",data_source ," set to '",bucket,"'")
   } else if(data_source == "Local"){
-    Sys.setenv("rioBucketLocal" = bucket)
+    message("For local data source, bucket name not required")
   }
-  message("Default bucket name for ",data_source ," set to '",bucket,"'")
+
 }
 
 #' Get global bucket name for rIO
