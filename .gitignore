@@ -5,3 +5,4 @@
 .Ruserdata
 .DS_Store
 .httr-oauth
+tests/tests.R
