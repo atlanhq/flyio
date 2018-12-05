@@ -42,32 +42,32 @@ library(flyio)
 
 ``` r
 # Setting the data source
-flyioSetDataSource("gcs")
+flyio_set_datasource("gcs")
 
 # Verify if the data source is set
-flyioGetDataSource()
+flyio_get_datasource()
 
 # Authenticate the default data source and set bucket
-flyioAuth("key.json")
-flyioSetBucket("socialcops-flyio")
+flyio_auth("key.json")
+flyio_set_bucket("socialcops-flyio")
 
 # Authenticate S3 also
-flyioAuth(c("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION", "AWS_SESSION_TOKEN"), data_source = "s3")
-flyioSetBucket("socialcops-flyio", data_source = "s3")
+flyio_auth(c("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION", "AWS_SESSION_TOKEN"), data_source = "s3")
+flyio_set_bucket("socialcops-flyio", data_source = "s3")
 
 # Listing the files in GCS
-listFiles(path = "test", pattern = "*csv")
+list_files(path = "test", pattern = "*csv")
 
 # Saving mtcars to all the data sources using default function write.csv
-writeTable(mtcars, "~/Downloads/mtcars.csv", data_source = "local")
-writeTable(mtcars, "test/mtcars.csv") # saving to GCS, need not mention as set globally
-writeTable(mtcars, "test/mtcars.csv", data_source = "s3")
+export_table(mtcars, "~/Downloads/mtcars.csv", data_source = "local")
+export_table(mtcars, "test/mtcars.csv") # saving to GCS, need not mention as set globally
+export_table(mtcars, "test/mtcars.csv", data_source = "s3")
 
 # Check if the file written exists in GCS
-fileExists("test/mtcars.csv")
+file_exists("test/mtcars.csv")
 
 # Read the file from GCS using readr library
-mtcars <- readTable("test/mtcars.csv", FUN = readr::read_csv)
+mtcars <- import_table("test/mtcars.csv", FUN = readr::read_csv)
 
 ```
 
