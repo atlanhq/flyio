@@ -13,6 +13,10 @@ export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
 
 \item{bucketpath}{path of the folder in which the files are to be uploaded}
 
+\item{pattern}{pattern of the file names in the folder to be uploaded}
+
+\item{overwrite}{if files need to be overwrited if already present}
+
 \item{data_source}{the name of the data source, if not set globally. can be gcs or s3}
 
 \item{bucket}{the name of the bucket, if not set globally}
