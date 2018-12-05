@@ -3,7 +3,7 @@ Input Output data from R - Download, upload, read, write objects from AWS S3, Go
 
 ## Overview
 
-flyio provides a common interface to interact with data from cloud storage providers or local storage directly from R. Currently supporting AWS S3 and GoogleCloudStorage, thanks to the API wrappers provided by cloudyr. flyio also supports tables, rasters, shapefiles, and R objects to be read or written to the data source from memory.
+**flyio** provides a common interface to interact with data from cloud storage providers or local storage directly from R. Currently supporting AWS S3 and GoogleCloudStorage, thanks to the API wrappers provided by cloudyr. **flyio** also supports tables, rasters, shapefiles, and R objects to be read or written to the data source from memory.
 
 <img src="wiki/flyio_exp.png" align="centre" />
 
