@@ -7,15 +7,15 @@ Input Output data from R - Download, upload, read, write objects from AWS S3, Go
 
 <img src="wiki/flyio_exp.png" align="centre" />
 
-  - `flyioSetDataSource()`: set the data source (gcs, s3, local) for all the other functions in flyio
-  - `flyioAuth()`: authenticate data source (gcs or s3) so that you have access to the data. In a single session different data sources can be authenticated
-  - `flyioSetBucket()`: set the bucket name once for any or both data sources so that you don't need to write it in each function
-  - `listFiles()`: list the files in the bucket/folder
-  - `fileExists()`: check if a file exists in the bucket/folder
-  - `fileUpload()`: upload a file to S3 or GCS from your local file system
-  - `fileDownload()`: download a file from S3 or GCS 
-  - `read[Table/Raster/Shp/Rds/Rda]()`: Read a file from the set data source and bucket from a user defined function
-  - `write[Table/Raster/Shp/Rds/Rda]()`: Write a file to the set data source and bucket from a user defined function
+  - `flyio_set_datasource()`: set the data source (gcs, s3, local) for all the other functions in flyio
+  - `flyio_auth()`: authenticate data source (gcs or s3) so that you have access to the data. In a single session different data sources can be authenticated
+  - `flyio_set_bucket()`: set the bucket name once for any or both data sources so that you don't need to write it in each function
+  - `list_files()`: list the files in the bucket/folder
+  - `file_exists()`: check if a file exists in the bucket/folder
+  - `export_file()`: upload a file to S3 or GCS from R
+  - `import_file()`: download a file from S3 or GCS 
+  - `import_[table/raster/shp/rds/rda]()`: Read a file from the set data source and bucket from a user defined function
+  - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user defined function
  
 ## Installation
 
