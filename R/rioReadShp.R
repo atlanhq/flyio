@@ -8,6 +8,7 @@
 #' @param bucket the name of the bucket, if not set globally
 #' @param ... other parameters for the FUN function defined above
 #' @export "rioReadShp"
+#' @importFrom rgdal readOGR
 #' @return the output of the FUN function
 #'
 #' @examples

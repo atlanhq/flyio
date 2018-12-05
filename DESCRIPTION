@@ -18,4 +18,5 @@ Imports:
     googleCloudStorageR,
     aws.s3,
     utils,
-    tools
+    tools,
+    rgdal
