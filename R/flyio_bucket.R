@@ -9,17 +9,19 @@
 #'
 #' @examples flyio_set_bucket(bucket = "socialcops-test", data_source = "S3")
 flyio_set_bucket <- function(bucket, data_source = flyio_get_datasource()){
-  assert_that(is.string(bucket) && bucket != "", msg = "Enter a valid bucket name")
-  assert_that(str_to_lower(data_source) %in% c("gcs", "s3", "local"), msg = "Enter a valid data source")
   data_source = str_to_title(data_source)
+  assert_that(data_source %in% c("Gcs", "S3", "Local"), msg = "Enter a valid data source")
+  if(data_source == "Local"){
+    message("For local data source, bucket name not required")
+    return(invisible(bucket))
+  }
+  assert_that(is.string(bucket) && bucket != "", msg = "Enter a valid bucket name")
   if(data_source == "Gcs"){
     Sys.setenv("rioBucketGcs" = bucket)
     message("Default bucket name for ",data_source ," set to '",bucket,"'")
   } else if(data_source == "S3"){
     Sys.setenv("rioBucketS3" = bucket)
     message("Default bucket name for ",data_source ," set to '",bucket,"'")
-  } else if(data_source == "Local"){
-    message("For local data source, bucket name not required")
   }
 
 }
