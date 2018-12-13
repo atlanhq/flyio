@@ -78,5 +78,5 @@ mtcars <- import_table("test/mtcars.csv", FUN = readr::read_csv)
 <br/><br/>
 
 
-<img src="https://i.imgur.com/kjraU3P.jpg" align="centre" />
+<img src="http://i66.tinypic.com/29vjrjk.png" align="centre" />
 
