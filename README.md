@@ -1,31 +1,31 @@
 # flyio - Make data fly to R <img src="wiki/logo.png" align="right" />
-Input Output data from R - Download, upload, read, write objects from AWS S3, GoogleCloudStorage or local file system with a single interface. Read the manual [here](https://github.com/socialcopsdev/flyio/blob/master/wiki/flyio-manual.pdf)
+Input and output data from R — download, upload, read and write objects from AWS S3, GoogleCloudStorage or local file system from a single interface. Read the manual [here](https://github.com/socialcopsdev/flyio/blob/master/wiki/flyio-manual.pdf).
 
 ## Overview
 
-**flyio** provides a common interface to interact with data from cloud storage providers or local storage directly from R. Currently supporting AWS S3 and GoogleCloudStorage, thanks to the API wrappers provided by cloudyr. **flyio** also supports tables, rasters, shapefiles, and R objects to be read or written to the data source from memory.
+**flyio** provides a common interface to interact with data from cloud storage providers or local storage directly from R. It currently supports AWS S3 and Google Cloud Storage, thanks to the API wrappers provided by cloudyr. **flyio** also supports reading or writing tables, rasters, shapefiles and R objects to the data source from memory.
 
 <img src="wiki/flyio_exp.png" align="centre" />
 
-  - `flyio_set_datasource()`: set the data source (gcs, s3, local) for all the other functions in flyio
-  - `flyio_auth()`: authenticate data source (gcs or s3) so that you have access to the data. In a single session different data sources can be authenticated
-  - `flyio_set_bucket()`: set the bucket name once for any or both data sources so that you don't need to write it in each function
-  - `list_files()`: list the files in the bucket/folder
-  - `file_exists()`: check if a file exists in the bucket/folder
-  - `export_file()`: upload a file to S3 or GCS from R
-  - `import_file()`: download a file from S3 or GCS 
-  - `import_[table/raster/shp/rds/rda]()`: Read a file from the set data source and bucket from a user defined function
-  - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user defined function
+  - `flyio_set_datasource()`: Set the data source (GCS, S3 or local) for all the other functions in flyio.
+  - `flyio_auth()`: Authenticate data source (GCS or S3) so that you have access to the data. In a single session, different data sources can be authenticated.
+  - `flyio_set_bucket()`: Set the bucket name once for any or both data sources so that you don't need to write it in each function.
+  - `list_files()`: List the files in the bucket/folder.
+  - `file_exists()`: Check if a file exists in the bucket/folder.
+  - `export_file()`: Upload a file to S3 or GCS from R.
+  - `import_file()`: Download a file from S3 or GCS. 
+  - `import_[table/raster/shp/rds/rda]()`: Read a file from the set data source and bucket from a user-defined function.
+  - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user-defined function.
  
 ## Installation
 
-Generate Personal Access Token, since this is a private repo: <br />
-  - Go to https://github.com/settings/tokens <br />
-  - Click "Generate a personal access token" 
-  - Tick 'repo' <br />
-  - Scroll to the bottom and click "Generate token"<br />
-  - Enter "flyio" in the token description box<br />
-  - Copy the token <br />
+Generate a personal access token, since this is a private repository: <br />
+  - Go to https://github.com/settings/tokens. <br />
+  - Click "Generate a personal access token".
+  - Tick "repo". <br />
+  - Scroll to the bottom and click "Generate token".<br />
+  - Enter "flyio" in the token description box.<br />
+  - Copy the token. <br />
 <br />
 In R, run the following command:
 
@@ -72,7 +72,5 @@ mtcars <- import_table("test/mtcars.csv", FUN = readr::read_csv)
 ```
 
 ## References
-* Cloudyr GCS Wrapper: https://github.com/cloudyr/googleCloudStorageR
-* Cloudyr S3 Wrapper: https://github.com/cloudyr/aws.s3
-
-
+* Cloudyr GCS wrapper: https://github.com/cloudyr/googleCloudStorageR
+* Cloudyr S3 wrapper: https://github.com/cloudyr/aws.s3
