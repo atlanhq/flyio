@@ -10,15 +10,15 @@ list_files(path = "", pattern = NULL, recursive = FALSE,
   bucket = flyio_get_bucket(data_source))
 }
 \arguments{
-\item{path}{the folder for which the files needs to be listed}
+\item{path}{the folder for which the files need to be listed}
 
-\item{pattern}{an optional regular expression. Only file path names which match the regular expression will be returned.}
+\item{pattern}{an optional regular expression. Only file path names that match the regular expression will be returned.}
 
 \item{recursive}{logical. Should the listing recurse into directories?}
 
 \item{ignore.case}{logical. Should pattern-matching be case-insensitive?}
 
-\item{full.names}{logical. Should the entire path be returned or only after the path inputed.}
+\item{full.names}{logical. Should the entire path be returned or only after the path inputed?}
 
 \item{data_source}{the name of the data source, gcs, s3 or local; if not set globally}
 

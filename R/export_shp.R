@@ -1,7 +1,7 @@
 #' Write shapefiles
 #'
 #' @param obj R object to be written
-#' @param pathshp the path of the shapefile, may or may not include the extension
+#' @param pathshp the path of the shapefile, which may or may not include the extension
 #' @param FUN the function using which the file is to be read
 #' @param dsnlayerbind if the FUN needs dsn and layer binded or not
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
@@ -25,24 +25,26 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
   dsn = gsub(paste0(filename,"$"),"", pathshp)
   dsnlayer = gsub("\\/+","/", paste0(dsn,"/",layer))
   l <- list(...)
-  if(identical(FUN, rgdal::writeOGR) & is.null(l$driver)){
-    FUN <- function(...){
-      rgdal::writeOGR(..., driver = "ESRI Shapefile")
+  if(missing(FUN) & is.null(l$driver)){
+    FUN1 <- function(...){
+      FUN(..., driver = "ESRI Shapefile")
     }
+  } else{
+    FUN1 = FUN
   }
   if(data_source == "local"){
     if(dsnlayerbind == F){
-      result = FUN(obj, dsn, layer, ...)
+      result = FUN1(obj, dsn, layer, ...)
     } else{
-      result = FUN(obj, dsnlayer, ...)
+      result = FUN1(obj, dsnlayer, ...)
     }
     return(invisible(result))
   }
   if(dsnlayerbind == F){
-    result = FUN(obj, tempdir(), layer, ...)
+    result = FUN1(obj, tempdir(), layer, ...)
   } else{
     tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer))
-    result = FUN(obj, tmplayer, ...)
+    result = FUN1(obj, tmplayer, ...)
   }
   shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
   shpfiles = grep("dbf|prj|shp|shx|cpg|qpj", shpfiles, value = T)

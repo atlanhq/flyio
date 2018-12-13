@@ -9,13 +9,13 @@ flyio_set_bucket(bucket, data_source = flyio_get_datasource())
 \arguments{
 \item{bucket}{the bucket name to be set}
 
-\item{data_source}{the data source used for IO. Default chooses the data source set using flyio_set_datasource()}
+\item{data_source}{the data source used for I/O. Default chooses the data source set using flyio_set_datasource()}
 }
 \value{
 stores the bucket name in a global environment under rioBucketGcs or rioBucketS3
 }
 \description{
-Set global bucket name to be used for all the function in flyio
+Set global bucket name to be used for all the functions in flyio
 }
 \examples{
 flyio_set_bucket(bucket = "socialcops-test", data_source = "S3")

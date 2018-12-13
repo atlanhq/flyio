@@ -1,10 +1,10 @@
 #' List the Files in a Directory/Folder
 #' @description list the files in cloud or locally - similar to list.files()
-#' @param path the folder for which the files needs to be listed
-#' @param pattern an optional regular expression. Only file path names which match the regular expression will be returned.
+#' @param path the folder for which the files need to be listed
+#' @param pattern an optional regular expression. Only file path names that match the regular expression will be returned.
 #' @param recursive logical. Should the listing recurse into directories?
 #' @param ignore.case logical. Should pattern-matching be case-insensitive?
-#' @param full.names logical. Should the entire path be returned or only after the path inputed.
+#' @param full.names logical. Should the entire path be returned or only after the path inputed?
 #' @param data_source the name of the data source, gcs, s3 or local; if not set globally
 #' @param bucket the name of the bucket, if not set globally
 #'

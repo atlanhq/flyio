@@ -1,8 +1,8 @@
-#' Upload a file from the local system to cloud
-#' @description Write a local file to the cloud, S3 or GCS
+#' Upload a folder from the local system to cloud
+#' @description Write a local folder to the cloud, S3 or GCS
 #' @param localfolder path of the folder in which all the files are to be uploaded
 #' @param pattern pattern of the file names in the folder to be uploaded
-#' @param overwrite if files need to be overwrited if already present
+#' @param overwrite if files need to be overwritten (if already present)
 #' @param bucketpath path of the folder in which the files are to be uploaded
 #' @param data_source the name of the data source, if not set globally. can be gcs or s3
 #' @param bucket the name of the bucket, if not set globally

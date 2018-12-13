@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_folder.R
 \name{export_folder}
 \alias{export_folder}
-\title{Upload a file from the local system to cloud}
+\title{Upload a folder from the local system to cloud}
 \usage{
 export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
   data_source = flyio_get_datasource(),
@@ -15,7 +15,7 @@ export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
 
 \item{pattern}{pattern of the file names in the folder to be uploaded}
 
-\item{overwrite}{if files need to be overwrited if already present}
+\item{overwrite}{if files need to be overwritten (if already present)}
 
 \item{data_source}{the name of the data source, if not set globally. can be gcs or s3}
 
@@ -27,7 +27,7 @@ export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
 the filename and path of the file in the bucket
 }
 \description{
-Write a local file to the cloud, S3 or GCS
+Write a local folder to the cloud, S3 or GCS
 }
 \examples{
 \dontrun{

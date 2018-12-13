@@ -1,8 +1,8 @@
 #' Authenticate flyio
 #' @description Authenticate any of the cloud storage platforms to perform any I/O
-#' @param auth_list path to the json file or the system environment name in case of GCS. For S3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma separated string.
+#' @param auth_list path to the json file or the system environment name in case of gcs. For s3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma-separated string.
 #' @param data_source default to local. Possible options : gcs, s3, local. Case insensitive
-#' @param scope the scope of the auth if gcs. Default https://www.googleapis.com/auth/devstorage.full_control
+#' @param scope the scope of the auth if gcs. Default: https://www.googleapis.com/auth/devstorage.full_control
 #' @export "flyio_auth"
 #' @import "googleCloudStorageR" "stringr" "aws.s3" "assertthat" "utils" "tools"
 #' @examples

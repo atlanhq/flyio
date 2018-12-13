@@ -8,11 +8,11 @@ flyio_auth(auth_list = "", data_source = flyio_get_datasource(),
   scope = "https://www.googleapis.com/auth/devstorage.full_control")
 }
 \arguments{
-\item{auth_list}{path to the json file or the system environment name in case of GCS. For S3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma separated string.}
+\item{auth_list}{path to the json file or the system environment name in case of gcs. For s3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma-separated string.}
 
 \item{data_source}{default to local. Possible options : gcs, s3, local. Case insensitive}
 
-\item{scope}{the scope of the auth if gcs. Default https://www.googleapis.com/auth/devstorage.full_control}
+\item{scope}{the scope of the auth if gcs. Default: https://www.googleapis.com/auth/devstorage.full_control}
 }
 \description{
 Authenticate any of the cloud storage platforms to perform any I/O

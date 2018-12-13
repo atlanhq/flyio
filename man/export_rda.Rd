@@ -8,7 +8,7 @@ export_rda(..., file, FUN = save, data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source))
 }
 \arguments{
-\item{...}{R pbjects need to be saved}
+\item{...}{R ojects need to be saved}
 
 \item{file}{path of the file to be written to}
 

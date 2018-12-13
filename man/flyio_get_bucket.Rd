@@ -7,13 +7,13 @@
 flyio_get_bucket(data_source = flyio_get_datasource())
 }
 \arguments{
-\item{data_source}{the data source used for IO. Default chooses the data source set using flyio_set_datasource()}
+\item{data_source}{the data source used for I/O. Default chooses the data source set using flyio_set_datasource()}
 }
 \value{
 the string - bucket name stored
 }
 \description{
-Get global bucket name to be used for all the function in flyio
+Get global bucket name to be used for all the functions in flyio
 }
 \details{
 if the data source is local, then an empty string is returned

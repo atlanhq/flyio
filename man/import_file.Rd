@@ -10,7 +10,7 @@ import_file(bucketpath, localfile, data_source = flyio_get_datasource(),
 \arguments{
 \item{bucketpath}{path of file in the bucket}
 
-\item{localfile}{path where the file needs to be downloaded. The filename and extension also needs to be present, if not the current file name will be considered}
+\item{localfile}{path where the file needs to be downloaded. The file name and extension also need to be present; if not, the current file name will be considered}
 
 \item{data_source}{the name of the data source, if not set globally, gcs or s3}
 

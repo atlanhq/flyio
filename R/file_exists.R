@@ -1,7 +1,7 @@
 #' Check if a file exists
 #'
 #' @param path the entire path for the file
-#' @param data_source the name of the data source, gcs, s3 or local; if not set globally
+#' @param data_source the name of the data source, if not set globally. s3, gsc or local
 #' @param bucket the name of the bucket, if not set globally
 #'
 #' @export "file_exists"

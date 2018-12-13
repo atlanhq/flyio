@@ -1,6 +1,6 @@
 #' Write RDA files
 #' @description Write R data RDA file to anywhere from R
-#' @param ... R pbjects need to be saved
+#' @param ... R ojects need to be saved
 #' @param file path of the file to be written to
 #' @param FUN the function using which the file is to write
 #' @param bucket the name of the bucket, if not set globally

@@ -1,8 +1,8 @@
-#' Set global DataSource name for flyio
-#' @description Set global DataSource name to be used for all the function in flyio
+#' Set global data source name for flyio
+#' @description Set global data source name to be used for all the function in flyio
 #' @param data_source the DataSource name to be set
 #'
-#' @return stores the DataSource name in a global environment under rioDataSource
+#' @return stores the data source name in a global environment under rioDataSource
 #' @export "flyio_set_datasource"
 #' @import "stringr"
 #' @examples flyio_set_datasource("local")
@@ -13,9 +13,9 @@ flyio_set_datasource <- function(data_source){
   message("Default Data Source name set to '",data_source,"'")
 }
 
-#' Get global Data Source name for flyio
-#' @description Get global data source name to be used for all the function in flyio. Returns the value stored using flyio_set_datasource
-#' @return the string - DataSource name stored
+#' Get global data source name for flyio
+#' @description Get global data source name to be used for all the functions in flyio. Returns the value stored using flyio_set_datasource
+#' @return the string - data source name stored
 #' @export "flyio_get_datasource"
 #'
 #' @examples

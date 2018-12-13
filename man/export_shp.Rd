@@ -11,7 +11,7 @@ export_shp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
 \arguments{
 \item{obj}{R object to be written}
 
-\item{pathshp}{the path of the shapefile, may or may not include the extension}
+\item{pathshp}{the path of the shapefile, which may or may not include the extension}
 
 \item{FUN}{the function using which the file is to be read}
 

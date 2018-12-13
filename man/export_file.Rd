@@ -10,13 +10,13 @@ export_file(localfile, bucketpath, data_source = flyio_get_datasource(),
 \arguments{
 \item{localfile}{path of the file to be uploaded}
 
-\item{bucketpath}{path there the file needs to be uploaded, the filename can or cannot be present}
+\item{bucketpath}{path where the file needs to be uploaded, the file name can or cannot be present}
 
 \item{data_source}{the name of the data source, if not set globally. gcs or s3}
 
 \item{bucket}{the name of the bucket, if not set globally}
 
-\item{...}{other parameters for gcs_upload}
+\item{...}{other parameters for gcs_upload or aws.s3::put_object}
 }
 \value{
 the filename and path of the file in the bucket

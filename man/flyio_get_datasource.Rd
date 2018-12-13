@@ -2,15 +2,15 @@
 % Please edit documentation in R/flyio_datasource.R
 \name{flyio_get_datasource}
 \alias{flyio_get_datasource}
-\title{Get global Data Source name for flyio}
+\title{Get global data source name for flyio}
 \usage{
 flyio_get_datasource()
 }
 \value{
-the string - DataSource name stored
+the string - data source name stored
 }
 \description{
-Get global data source name to be used for all the function in flyio. Returns the value stored using flyio_set_datasource
+Get global data source name to be used for all the functions in flyio. Returns the value stored using flyio_set_datasource
 }
 \examples{
 # first setting the data source

@@ -1,10 +1,10 @@
 #' Upload a file from the local system to cloud
 #' @description Write a local file to the cloud, S3 or GCS
 #' @param localfile path of the file to be uploaded
-#' @param bucketpath path there the file needs to be uploaded, the filename can or cannot be present
+#' @param bucketpath path where the file needs to be uploaded, the file name can or cannot be present
 #' @param data_source the name of the data source, if not set globally. gcs or s3
 #' @param bucket the name of the bucket, if not set globally
-#' @param ... other parameters for gcs_upload
+#' @param ... other parameters for gcs_upload or aws.s3::put_object
 #'
 #' @export "export_file"
 #' @return the filename and path of the file in the bucket

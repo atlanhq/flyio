@@ -2,7 +2,7 @@
 #' Download file from cloud to local system
 #' @description Save a single file from the cloud to your local drive
 #' @param bucketpath path of file in the bucket
-#' @param localfile path where the file needs to be downloaded. The filename and extension also needs to be present, if not the current file name will be considered
+#' @param localfile path where the file needs to be downloaded. The file name and extension also need to be present; if not, the current file name will be considered
 #' @param data_source the name of the data source, if not set globally, gcs or s3
 #' @param bucket the name of the bucket, if not set globally
 #' @param overwrite logical. If the files should be overwritten if already present

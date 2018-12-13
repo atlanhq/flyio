@@ -10,7 +10,7 @@ file_exists(path, data_source = flyio_get_datasource(),
 \arguments{
 \item{path}{the entire path for the file}
 
-\item{data_source}{the name of the data source, gcs, s3 or local; if not set globally}
+\item{data_source}{the name of the data source, if not set globally. s3, gsc or local}
 
 \item{bucket}{the name of the bucket, if not set globally}
 }

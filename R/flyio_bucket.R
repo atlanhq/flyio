@@ -1,7 +1,7 @@
 #' Set global bucket name for flyio
-#' @description Set global bucket name to be used for all the function in flyio
+#' @description Set global bucket name to be used for all the functions in flyio
 #' @param bucket the bucket name to be set
-#' @param data_source the data source used for IO. Default chooses the data source set using flyio_set_datasource()
+#' @param data_source the data source used for I/O. Default chooses the data source set using flyio_set_datasource()
 #'
 #' @return stores the bucket name in a global environment under rioBucketGcs or rioBucketS3
 #' @export "flyio_set_bucket"
@@ -27,8 +27,8 @@ flyio_set_bucket <- function(bucket, data_source = flyio_get_datasource()){
 }
 
 #' Get global bucket name for flyio
-#' @description Get global bucket name to be used for all the function in flyio
-#' @param data_source the data source used for IO. Default chooses the data source set using flyio_set_datasource()
+#' @description Get global bucket name to be used for all the functions in flyio
+#' @param data_source the data source used for I/O. Default chooses the data source set using flyio_set_datasource()
 #' @return the string - bucket name stored
 #' @details if the data source is local, then an empty string is returned
 #' @export "flyio_get_bucket"
