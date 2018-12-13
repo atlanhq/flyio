@@ -1,11 +1,11 @@
-# flyio - Make data fly to R <img src="wiki/logo.png" align="right" />
+# flyio - Make data fly to R <img src="https://imgur.com/XtsxAmX" align="right" />
 Input and output data from R — download, upload, read and write objects from AWS S3, GoogleCloudStorage or local file system from a single interface. Read the manual [here](https://github.com/socialcopsdev/flyio/blob/master/wiki/flyio-manual.pdf).
 
 ## Overview
 
 **flyio** provides a common interface to interact with data from cloud storage providers or local storage directly from R. It currently supports AWS S3 and Google Cloud Storage, thanks to the API wrappers provided by cloudyr. **flyio** also supports reading or writing tables, rasters, shapefiles and R objects to the data source from memory.
 
-<img src="wiki/flyio_exp.png" align="centre" />
+<img src="https://imgur.com/tdP2oxB" align="centre" />
 
   - `flyio_set_datasource()`: Set the data source (GCS, S3 or local) for all the other functions in flyio.
   - `flyio_auth()`: Authenticate data source (GCS or S3) so that you have access to the data. In a single session, different data sources can be authenticated.
@@ -74,3 +74,6 @@ mtcars <- import_table("test/mtcars.csv", FUN = readr::read_csv)
 ## References
 * Cloudyr GCS wrapper: https://github.com/cloudyr/googleCloudStorageR
 * Cloudyr S3 wrapper: https://github.com/cloudyr/aws.s3
+
+<img src="https://imgur.com/kjraU3P" align="centre" />
+
