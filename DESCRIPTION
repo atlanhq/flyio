@@ -10,7 +10,7 @@ BugReports: https://github.com/socialcopsdev/flyio/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Depends: R (>= 3.1.2)
 Imports: 
     stringr,
@@ -18,5 +18,4 @@ Imports:
     googleCloudStorageR,
     aws.s3,
     utils,
-    tools,
-    rgdal
+    tools
