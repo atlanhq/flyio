@@ -1,5 +1,5 @@
 # flyio - Make data fly to R <img src="https://i.imgur.com/XtsxAmX.png" align="right" />
-Input and output data from R — download, upload, read and write objects from AWS S3, GoogleCloudStorage or local file system from a single interface. Read the manual [here](https://github.com/socialcopsdev/flyio/blob/master/wiki/flyio-manual.pdf).
+Input and output data from R — download, upload, read and write objects from AWS S3, GoogleCloudStorage or local file system from a single interface.
 
 ## Overview
 
