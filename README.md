@@ -19,16 +19,6 @@ Input and output data from R — download, upload, read and write objects from A
  
 ## Installation
 
-Generate a personal access token, since this is a private repository: <br />
-  - Go to https://github.com/settings/tokens. <br />
-  - Click "Generate a personal access token".
-  - Tick "repo". <br />
-  - Scroll to the bottom and click "Generate token".<br />
-  - Enter "flyio" in the token description box.<br />
-  - Copy the token. <br />
-<br />
-In R, run the following command:
-
 ``` r
 # Install the latest dev version from GitHub:
 install.packages("devtools")
@@ -37,6 +27,7 @@ devtools::install_github("socialcopsdev/flyio", auth_token = "paste token copied
 # Load the library
 library(flyio)
 ```
+If you encounter a bug, please file an issue with steps to reproduce it on Github. Please use the same for any feature requests, enhancements or suggestions.
 
 ### Example
 
