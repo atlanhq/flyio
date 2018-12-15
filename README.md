@@ -22,7 +22,7 @@ Input and output data from R — download, upload, read and write objects from A
 ``` r
 # Install the latest dev version from GitHub:
 install.packages("devtools")
-devtools::install_github("socialcopsdev/flyio", auth_token = "paste token copied above")
+devtools::install_github("socialcopsdev/flyio")
 
 # Load the library
 library(flyio)
