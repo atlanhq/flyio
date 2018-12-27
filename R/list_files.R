@@ -7,6 +7,7 @@
 #' @param full.names logical. Should the entire path be returned or only after the path inputed?
 #' @param data_source the name of the data source, gcs, s3 or local; if not set globally
 #' @param bucket the name of the bucket, if not set globally
+#' @param check_region logical. to check region for aws.s3
 #'
 #' @export "list_files"
 #' @return a vector of full file names
@@ -20,7 +21,7 @@
 
 list_files <- function(path = "", pattern = NULL, recursive = FALSE,
                          ignore.case = FALSE, full.names = TRUE,
-                         data_source = flyio_get_datasource(), bucket = flyio_get_bucket(data_source)){
+                         data_source = flyio_get_datasource(), bucket = flyio_get_bucket(data_source), check_region = FALSE){
   assert_that(is.character(path))
   assert_that(str_to_lower(data_source) %in% c("gcs", "s3", "local"), msg = "Input a valid data source")
   data_source = str_to_lower(data_source)
@@ -33,9 +34,9 @@ list_files <- function(path = "", pattern = NULL, recursive = FALSE,
   path = gsub("\\/+","/",path)
   path = gsub("^\\/|^\\.\\/|^\\.","",path)
   if(data_source == "gcs"){
-    obj = gcs_list_objects(bucket = bucket, detail = "summary", prefix = path)$name
+    obj = gcs_list_objects(bucket = bucket, detail = "summary", prefix = path, ...)$name
   } else if(data_source == "s3"){
-    obj = unname(unlist(lapply(get_bucket(bucket = bucket, prefix = path, max = Inf), `[[`, 1)))
+    obj = unname(unlist(lapply(get_bucket(bucket = bucket, prefix = path, max = Inf,check_region = check_region), `[[`, 1)))
   }
 
   # if pattern is provided

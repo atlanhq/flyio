@@ -7,7 +7,7 @@
 list_files(path = "", pattern = NULL, recursive = FALSE,
   ignore.case = FALSE, full.names = TRUE,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source))
+  bucket = flyio_get_bucket(data_source), check_region = FALSE)
 }
 \arguments{
 \item{path}{the folder for which the files need to be listed}
@@ -23,6 +23,8 @@ list_files(path = "", pattern = NULL, recursive = FALSE,
 \item{data_source}{the name of the data source, gcs, s3 or local; if not set globally}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{check_region}{logical. to check region for aws.s3}
 }
 \value{
 a vector of full file names
