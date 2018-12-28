@@ -38,7 +38,7 @@ export_file <- function(localfile, bucketpath, data_source = flyio_get_datasourc
   }
 
   ## its not a folder and only a file to upload
-  assert_that(tools::file_ext(localfile) != "" & tools::file_ext(bucketpath) != "",
+  assert_that(!is.dir(localfile),
               msg = "Cannot upload a folder. Make sure its a file.")
 
   # upload the file if everything is fine
@@ -46,7 +46,13 @@ export_file <- function(localfile, bucketpath, data_source = flyio_get_datasourc
   if(data_source == "gcs"){
     upload_return = gcs_upload(file = localfile, name = bucketpath, bucket = bucket, ...)
   } else if(data_source == "s3"){
-    upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, ...)
+    l <- list(...)
+    if(is.null(l$multipart)){
+      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, multipart = TRUE, ...)
+    } else{
+      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, ...)
+    }
+
   }
   return(invisible(bucketpath))
 }
