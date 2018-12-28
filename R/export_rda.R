@@ -19,9 +19,9 @@
 export_rda <- function(..., file, FUN = save, data_source = flyio_get_datasource(),
                         bucket = flyio_get_bucket(data_source)){
   # checking if the file is valid
-  assert_that(tools::file_ext(file) %in% c("rda", "Rda"), msg = "Please input a valid path")
+  assert_that(tools::file_ext(file) %in% c("rda", "Rda","RData"), msg = "Please input a valid path")
   if(data_source == "local"){
-    t = FUN(..., file)
+    t = FUN(..., file = file)
     return(invisible(t))
   }
   # a tempfile with the required extension
@@ -30,7 +30,7 @@ export_rda <- function(..., file, FUN = save, data_source = flyio_get_datasource
   # loading the file to the memory using user defined function
   file = gsub("\\/+","/",file)
   FUN(..., file = temp)
-  # downloading the file
+  # uploading the file
   export_file(localfile = temp, bucketpath = file, data_source = data_source, bucket = bucket)
 
 }
