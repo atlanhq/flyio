@@ -16,6 +16,11 @@ Input and output data from R — download, upload, read and write objects from A
   - `import_file()`: Download a file from S3 or GCS. 
   - `import_[table/raster/shp/rds/rda]()`: Read a file from the set data source and bucket from a user-defined function.
   - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user-defined function.
+  
+For global usage, the datsource, authentication keys and bucket can be set in the environment variables of the machine so that one does not have to input it every time. 
+  - For datasource:`flyioDataSource`
+  - For bucket name: `flyioBucketS3` or `flyioBucketGcs`
+  - For authentication: `GCS_AUTH_FILE` or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`
  
 ## Installation
 
