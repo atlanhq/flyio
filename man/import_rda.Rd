@@ -16,6 +16,8 @@ import_rda(file, FUN = load, data_source = flyio_get_datasource(),
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{envir}{the environment in which to import the objects}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{

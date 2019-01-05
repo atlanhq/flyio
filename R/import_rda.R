@@ -4,6 +4,7 @@
 #' @param FUN the function using which the file is to be read
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param bucket the name of the bucket, if not set globally
+#' @param envir the environment in which to import the objects
 #' @param ... other parameters for the FUN function defined above
 #' @export "import_rda"
 #' @return the output of the FUN function
