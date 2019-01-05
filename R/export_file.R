@@ -48,9 +48,9 @@ export_file <- function(localfile, bucketpath, data_source = flyio_get_datasourc
   } else if(data_source == "s3"){
     l <- list(...)
     if(is.null(l$multipart)){
-      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, multipart = TRUE, ...)
+      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, multipart = TRUE, check_region = FALSE, ...)
     } else{
-      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, ...)
+      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, check_region = FALSE, ...)
     }
 
   }
