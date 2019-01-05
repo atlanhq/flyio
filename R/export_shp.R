@@ -23,7 +23,7 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
   filename = basename(pathshp)
   layer = gsub(paste0("\\.",tools::file_ext(pathshp),"$"), "", filename)
   dsn = gsub(paste0(filename,"$"),"", pathshp)
-  dsnlayer = gsub("\\/+","/", paste0(dsn,"/",layer))
+  dsnlayer = pathshp
   l <- list(...)
   if(missing(FUN) & is.null(l$driver)){
     FUN1 <- function(...){
