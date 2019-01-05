@@ -12,7 +12,7 @@ flyio_set_bucket(bucket, data_source = flyio_get_datasource())
 \item{data_source}{the data source used for I/O. Default chooses the data source set using flyio_set_datasource()}
 }
 \value{
-stores the bucket name in a global environment under rioBucketGcs or rioBucketS3
+stores the bucket name in a global environment under flyioBucketGcs or flyioBucketS3
 }
 \description{
 Set global bucket name to be used for all the functions in flyio

@@ -10,7 +10,7 @@ flyio_set_datasource(data_source)
 \item{data_source}{the DataSource name to be set}
 }
 \value{
-stores the data source name in a global environment under rioDataSource
+stores the data source name in a global environment under flyioDataSource
 }
 \description{
 Set global data source name to be used for all the function in flyio
