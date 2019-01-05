@@ -1,7 +1,6 @@
 #' Read shapefiles
 #' @description Read shapefiles data from anywhere using a function defined by you
-#' @param dsn path of the file to be read
-#' @param layer the name of the shapefile without extension
+#' @param pathshp path of the shp file to be read
 #' @param FUN the function using which the file is to be read
 #' @param dsnlayerbind if the FUN needs dsn and layer binded or not
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
@@ -18,8 +17,12 @@
 #' t = import_shp("tests/shptest/", "testshp", FUN = shapefile, dsnlayerbind = T)
 #' }
 
-import_shp <- function(dsn, layer, FUN = rgdal::readOGR, dsnlayerbind = F, data_source = flyio_get_datasource(),
+import_shp <- function(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F, data_source = flyio_get_datasource(),
                        bucket = flyio_get_bucket(data_source), ...){
+  filename = basename(pathshp)
+  layer = gsub(paste0("\\.",tools::file_ext(pathshp),"$"), "", filename)
+  dsn = gsub(paste0(filename,"$"),"", pathshp)
+  dsnlayer = pathshp
   shpfiles = list_files(path = dsn, pattern = paste0(layer,"."), data_source = data_source, bucket = bucket)
   shpfiles = grep("dbf|prj|shp|shx|cpg|qpj", shpfiles, value = T)
   if(data_source == "local"){

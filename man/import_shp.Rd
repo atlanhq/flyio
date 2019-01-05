@@ -4,14 +4,12 @@
 \alias{import_shp}
 \title{Read shapefiles}
 \usage{
-import_shp(dsn, layer, FUN = rgdal::readOGR, dsnlayerbind = F,
+import_shp(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), ...)
 }
 \arguments{
-\item{dsn}{path of the file to be read}
-
-\item{layer}{the name of the shapefile without extension}
+\item{pathshp}{path of the shp file to be read}
 
 \item{FUN}{the function using which the file is to be read}
 
