@@ -34,7 +34,7 @@ list_files <- function(path = "", pattern = NULL, recursive = FALSE,
   path = gsub("\\/+","/",path)
   path = gsub("^\\/|^\\.\\/|^\\.","",path)
   if(data_source == "gcs"){
-    obj = gcs_list_objects(bucket = bucket, detail = "summary", prefix = path, ...)$name
+    obj = gcs_list_objects(bucket = bucket, detail = "summary", prefix = path)$name
   } else if(data_source == "s3"){
     obj = unname(unlist(lapply(get_bucket(bucket = bucket, prefix = path, max = Inf,check_region = check_region), `[[`, 1)))
   }
