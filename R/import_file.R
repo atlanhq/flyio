@@ -49,7 +49,7 @@ import_file <- function(bucketpath, localfile, data_source = flyio_get_datasourc
   if(data_source == "gcs"){
     save_file = gcs_get_object(object_name = bucketpath,bucket = bucket, saveToDisk = localfile, overwrite = overwrite, ...)
   } else if(data_source == "s3"){
-    save_file = aws.s3::save_object(object = bucketpath, bucket = bucket, file = localfile, overwrite = overwrite, ...)
+    save_file = aws.s3::save_object(object = bucketpath, bucket = bucket, file = localfile, overwrite = overwrite, check_region = FALSE, ...)
   }
   return(invisible(localfile))
 }
