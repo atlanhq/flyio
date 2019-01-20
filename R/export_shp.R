@@ -54,7 +54,8 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
     temp <- paste0(tempdir(), "/", i)
     on.exit(unlink(temp))
     # downloading the file
-    downlogical = export_file(localfile = temp, bucketpath = paste0(dsnlayer, ".", tools::file_ext(i)),
+    dsnlayer_i = gsub(paste0("\\.",tools::file_ext(dsnlayer),"$"), "", dsnlayer)
+    downlogical = export_file(localfile = temp, bucketpath = paste0(dsnlayer_i, ".", tools::file_ext(i)),
                                 bucket = bucket)
   }
 }
