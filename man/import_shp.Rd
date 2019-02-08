@@ -31,7 +31,7 @@ Read shapefiles data from anywhere using a function defined by you
 \dontrun{
 flyio_set_datasource("gcs")
 flyio_set_bucket("socialcops-test")
-t = import_shp("tests/shptest/", "testshp", FUN = readOGR, dsnlayerbind = F)
-t = import_shp("tests/shptest/", "testshp", FUN = shapefile, dsnlayerbind = T)
+t = import_shp("tests/shptest.shp", FUN = readOGR, dsnlayerbind = F)
+t = import_shp("tests/shptest.shp", FUN = shapefile, dsnlayerbind = T)
 }
 }
