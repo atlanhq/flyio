@@ -1,8 +1,9 @@
 #' Authenticate flyio
 #' @description Authenticate any of the cloud storage platforms to perform any I/O
-#' @param auth_list path to the json file or the system environment name in case of gcs. For s3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma-separated string.
+#' @param auth_list path to the json file or the system environment name in case of gcs. For s3 a vector for access_key, secret_access_key, region (optional; default us-east-1) and session_id (optional); this could also be a single comma-separated string. If left blank, then for s3 it will pick from ~/.aws/credentials file
 #' @param data_source default to local. Possible options : gcs, s3, local. Case insensitive
 #' @param scope the scope of the auth if gcs. Default: https://www.googleapis.com/auth/devstorage.full_control
+#' @param awsprofile if auth_list = "", which profile to use from ~/.aws/credentials
 #' @export "flyio_auth"
 #' @import "googleCloudStorageR" "stringr" "aws.s3" "assertthat" "utils" "tools"
 #' @examples
@@ -12,7 +13,8 @@
 
 
 flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
-                   scope = "https://www.googleapis.com/auth/devstorage.full_control"){
+                   scope = "https://www.googleapis.com/auth/devstorage.full_control",
+                   awsprofile = "default"){
 
   # checking if data_source input is valid
   invisible(assertthat::assert_that(stringr::str_to_lower(data_source) %in% c("local", "gcs", "s3"),
@@ -25,7 +27,7 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
   }
 
   # check the input for auth_list - split if comma present.
-  if(length(auth_list) == 1){
+  if(length(auth_list) == 1 & auth_list != ""){
     auth_list = stringr::str_trim(unlist(strsplit(auth_list, ",")))
   } else{
     invisible(assertthat::assert_that(!is.list(auth_list), msg = "Please input a vector in auth_list"))
@@ -40,7 +42,7 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
   if(str_to_lower(data_source) == "gcs"){
     auth_response = .gcsAuth(auth_list[1], scope)
   } else if(str_to_lower(data_source) == "s3"){
-    auth_response = .s3Auth(auth_list)
+    auth_response = .s3Auth(auth_list, awsprofile)
   }
   auth_response = assertthat::assert_that(isTRUE(auth_response), msg = "Authentication Failed!")
 }
@@ -63,7 +65,10 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
     })
 
 }
-.s3Auth <- function(auth_list){
+.s3Auth <- function(auth_list, awsprofile = "default"){
+  if(auth_list == ""){
+    auth_list = .awscred_profile(profile = awsprofile)
+  }
   invisible(assertthat::assert_that(length(auth_list)>=2, msg = "Input access key and secret key for S3"))
   auth_list <- switch (as.character(length(auth_list)),
                        "2" = c(auth_list, "us-east-1", ""),
@@ -77,3 +82,18 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
     cat("AWS S3 Authenticated!\n"); return(TRUE)}, error = function(err){})
 
 }
+
+.awscred_profile <- function(profile = "default"){
+  awscreds = readLines("~/.aws/credentials")
+  defaultprofile = grep(profile, awscreds)[1]
+  if(is.na(defaultprofile)){
+    return(list(aws_access_key_id="",
+                aws_secret_access_key=""))
+  }
+  assign(strsplit(awscreds[defaultprofile+1], " = ")[[1]][1],
+         strsplit(awscreds[defaultprofile+1], " = ")[[1]][2])
+  assign(strsplit(awscreds[defaultprofile+2], " = ")[[1]][1],
+         strsplit(awscreds[defaultprofile+2], " = ")[[1]][2])
+  return(c(aws_access_key_id, aws_secret_access_key))
+}
+
