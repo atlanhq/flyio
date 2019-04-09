@@ -61,6 +61,7 @@ export_folder <- function(localfolder, bucketpath, pattern = "*", overwrite = TR
   }
 
   # upload the file if everything is fine
+  pb <- txtProgressBar(min = 0, max = length(file_upload), style = 3)
   for(i in 1:length(file_upload)){
     bucketpath = gsub("\\/+$","",bucketpath)
     if(data_source == "gcs"){
@@ -68,7 +69,9 @@ export_folder <- function(localfolder, bucketpath, pattern = "*", overwrite = TR
     } else if(data_source == "s3"){
       upload_return = aws.s3::put_object(file = file_upload[i], bucket = bucket, object =  paste0(bucketpath,"/", basename(file_upload[i])), ...)
     }
+    setTxtProgressBar(pb, i)
   }
+  close(pb)
   return(invisible(bucketpath))
 }
 
