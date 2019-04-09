@@ -12,15 +12,15 @@ Input and output data from R — download, upload, read and write objects from A
   - `flyio_set_bucket()`: Set the bucket name once for any or both data sources so that you don't need to write it in each function.
   - `list_files()`: List the files in the bucket/folder.
   - `file_exists()`: Check if a file exists in the bucket/folder.
-  - `export_file()`: Upload a file to S3 or GCS from R.
+  - `export_[file/folder]()`: Upload a file/folder to S3 or GCS from R.
   - `import_file()`: Download a file from S3 or GCS. 
-  - `import_[table/raster/shp/rds/rda]()`: Read a file from the set data source and bucket from a user-defined function.
+  - `import_[table/raster/stack/shp/rds/rda]()`: Read a file from the set data source and bucket from a user-defined function.
   - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user-defined function.
   
 For global usage, the datsource, authentication keys and bucket can be set in the environment variables of the machine so that one does not have to input it every time. 
-  - For datasource:`flyioDataSource`
+  - For datasource:`CLOUD_STORAGE_NAME`
   - For bucket name: `flyioBucketS3` or `flyioBucketGcs`
-  - For authentication: `GCS_AUTH_FILE` or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`
+  - For authentication: `GCS_AUTH_FILE` or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION` (For AWS S3, if the awscli is athenticated, then this step is not needed)
  
 ## Installation
 
