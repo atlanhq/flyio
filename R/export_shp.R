@@ -43,7 +43,7 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
   if(dsnlayerbind == F){
     result = FUN1(obj, tempdir(), layer, ...)
   } else{
-    tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer))
+    tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer,".shp"))
     result = FUN1(obj, tmplayer, ...)
   }
   shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
@@ -53,10 +53,10 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
     # a tempfile with the required extension
     temp <- paste0(tempdir(), "/", i)
     on.exit(unlink(temp))
-    # downloading the file
+    # uploading the file
     dsnlayer_i = gsub(paste0("\\.",tools::file_ext(dsnlayer),"$"), "", dsnlayer)
     downlogical = export_file(localfile = temp, bucketpath = paste0(dsnlayer_i, ".", tools::file_ext(i)),
-                                bucket = bucket)
+                                bucket = bucket, data_source = data_source)
   }
 }
 
