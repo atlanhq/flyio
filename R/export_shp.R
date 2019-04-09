@@ -43,7 +43,7 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
   if(dsnlayerbind == F){
     result = FUN1(obj, tempdir(), layer, ...)
   } else{
-    tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer))
+    tmplayer = gsub("\\/+","/", paste0(tempdir(),"/",layer,".shp"))
     result = FUN1(obj, tmplayer, ...)
   }
   shpfiles = list.files(path = tempdir(), pattern = paste0(layer,"."))
