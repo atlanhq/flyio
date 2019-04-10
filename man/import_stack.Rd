@@ -6,7 +6,8 @@
 \usage{
 import_stack(pathstack, FUN = raster::stack,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = FALSE, ...)
 }
 \arguments{
 \item{pathstack}{vector of paths of rasters (layers)}
@@ -16,6 +17,10 @@ import_stack(pathstack, FUN = raster::stack,
 \item{data_source}{the name of the data source, if not set globally. s3, gcs or local}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
 
 \item{...}{other parameters for the FUN function defined above}
 }
