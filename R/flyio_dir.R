@@ -8,7 +8,7 @@
 #' @examples flyio_set_dir(dir = tempdir())
 flyio_set_dir <- function(dir = tempdir()){
   assert_that(is.dir(dir), msg = "Enter a valid directory name")
-  Sys.setenv("CLOUD_DIR" = dir)
+  Sys.setenv("CLOUD_DIR" = normalizePath(dir, mustWork = FALSE))
   message("Default directory name for flyio set to '",dir,"'")
 }
 
@@ -23,7 +23,7 @@ flyio_set_dir <- function(dir = tempdir()){
 flyio_get_dir <- function(){
   dir = Sys.getenv("CLOUD_DIR")
   if(dir == ""){
-    dir = tempdir()
+    dir = normalizePath(tempdir(), mustWork = FALSE)
   }
   return(dir)
 }
