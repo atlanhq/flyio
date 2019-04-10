@@ -13,9 +13,10 @@
 #' @import "googleCloudStorageR" "aws.s3" "stringr" "assertthat"
 #' @examples
 #' \dontrun{
+#' # import data from GCS to Local
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' import_file("mtcars.csv", "~/Downloads/dsada.csv", overwrite = T)
+#' flyio_set_bucket("your-bucket-name")
+#' import_file("mtcars.csv", paste0(tempdir(), "/mtcars.csv"), overwrite = T)
 #' }
 
 import_file <- function(bucketpath, localfile, data_source = flyio_get_datasource(),

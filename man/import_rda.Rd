@@ -33,8 +33,9 @@ Read RData or rda file from anywhere
 }
 \examples{
 \dontrun{
+# Load RDA from Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-load("tests/googletest.rda")
+flyio_set_bucket("your-bucket-name")
+import_rda("rds-on-cloud.rda")
 }
 }

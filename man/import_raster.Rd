@@ -32,8 +32,10 @@ Read raster data from anywhere using a function defined by you
 }
 \examples{
 \dontrun{
+# when data source is cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-t = import_raster("tests/testras.tif", raster)
+flyio_set_bucket("your-bucket-name")
+library(raster)
+t = import_raster("your-raster.tif", FUN = raster)
 }
 }

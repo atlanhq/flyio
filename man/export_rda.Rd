@@ -31,8 +31,9 @@ Write R data RDA file to anywhere from R
 }
 \examples{
 \dontrun{
+# save RDA on Google Cloud Storage
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_rda(iris, mtcars, "tests/iris.rda")
+flyio_set_bucket("your-bucket-name")
+export_rda(iris, mtcars, "rda-on-cloud.rda")
 }
 }

@@ -13,8 +13,9 @@
 #' @examples
 #' \dontrun{
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' export_raster(t, "tests/testras.tif", writeRaster, format = "GTiff")
+#' flyio_set_bucket("your-bucket-name")
+#' r1 <- raster(nrows=108, ncols=21, xmn=0, xmx=10)
+#' export_raster(r1, "raster-cloud.tif", writeRaster, format = "GTiff")
 #' }
 
 export_raster <- function(x, file, FUN = raster::writeRaster, data_source = flyio_get_datasource(),

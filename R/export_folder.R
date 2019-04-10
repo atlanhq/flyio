@@ -14,8 +14,8 @@
 #' @examples
 #' \dontrun{
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' export_folder("~/Downloads/", "tests/")
+#' flyio_set_bucket("your-bucket-name")
+#' export_folder("folder-local/", "folder-on-cloud/")
 #' }
 
 export_folder <- function(localfolder, bucketpath, pattern = "*", overwrite = TRUE, data_source = flyio_get_datasource(),

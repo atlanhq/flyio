@@ -13,9 +13,10 @@
 #'
 #' @examples
 #' \dontrun{
+#' # Load RDA from Google Cloud
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' load("tests/googletest.rda")
+#' flyio_set_bucket("your-bucket-name")
+#' import_rda("rds-on-cloud.rda")
 #' }
 
 import_rda <- function(file, FUN = load, data_source = flyio_get_datasource(),

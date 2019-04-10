@@ -36,8 +36,9 @@ Write shapefiles
 }
 \examples{
 \dontrun{
+# Save shapefile on Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_shp(t, "tests/shptest/", "new", driver = "ESRI Shapefile", overwrite = T)
+flyio_set_bucket("your-bucket-name")
+export_shp(your-shp, "your-shp.shp", driver = "ESRI Shapefile", overwrite = T)
 }
 }

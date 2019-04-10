@@ -31,9 +31,13 @@ the output of the FUN function
 Read tabular data from anywhere using a function defined by you
 }
 \examples{
+# for data on local
+filepath = system.file("extdata", "mtcars.csv", package = "flyio")
+data = import_table(filepath, data_source = "local")
 \dontrun{
+# for data on cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-import_table("tests/googletest.xlsx", read_excel)
+flyio_set_bucket("your-bucket-name")
+data = import_table("excel-file-on-gcs.xlsx", read_excel)
 }
 }

@@ -7,7 +7,7 @@
 #' @export "flyio_set_bucket"
 #' @import "stringr"
 #'
-#' @examples flyio_set_bucket(bucket = "socialcops-test", data_source = "S3")
+#' @examples flyio_set_bucket(bucket = "your-bucket-name", data_source = "S3")
 flyio_set_bucket <- function(bucket, data_source = flyio_get_datasource()){
   data_source = str_to_title(data_source)
   assert_that(data_source %in% c("Gcs", "S3", "Local"), msg = "Enter a valid data source")

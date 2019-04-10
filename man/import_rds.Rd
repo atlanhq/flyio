@@ -31,8 +31,9 @@ Read R data - RDS file from anywhere
 }
 \examples{
 \dontrun{
+# Import RDS from Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-import_rds("tests/googletest.rds", readRDS)
+flyio_set_bucket("your-bucket-name")
+import_rds("rds-on-cloud.rds", readRDS)
 }
 }

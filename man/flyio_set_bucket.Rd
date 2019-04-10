@@ -18,5 +18,5 @@ stores the bucket name in a global environment under flyioBucketGcs or flyioBuck
 Set global bucket name to be used for all the functions in flyio
 }
 \examples{
-flyio_set_bucket(bucket = "socialcops-test", data_source = "S3")
+flyio_set_bucket(bucket = "your-bucket-name", data_source = "S3")
 }

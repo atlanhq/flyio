@@ -33,9 +33,12 @@ No output
 Write csv, Excel files, txt
 }
 \examples{
+# for data on local
+export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
 \dontrun{
+# for data on cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_table(iris, "tests/iris.csv", write.csv)
+flyio_set_bucket("your-bucket-name")
+export_table(iris, "iris.csv", write.csv)
 }
 }

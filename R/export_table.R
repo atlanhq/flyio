@@ -13,10 +13,13 @@
 #' @return No output
 #' @export "export_table"
 #' @examples
+#' # for data on local
+#' export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
 #' \dontrun{
+#' # for data on cloud
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' export_table(iris, "tests/iris.csv", write.csv)
+#' flyio_set_bucket("your-bucket-name")
+#' export_table(iris, "iris.csv", write.csv)
 #' }
 
 export_table <- function(x, file, FUN = write.csv, data_source = flyio_get_datasource(),

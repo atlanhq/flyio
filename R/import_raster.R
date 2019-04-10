@@ -14,16 +14,18 @@
 #'
 #' @examples
 #' \dontrun{
+#' # when data source is cloud
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' t = import_raster("tests/testras.tif", raster)
+#' flyio_set_bucket("your-bucket-name")
+#' library(raster)
+#' t = import_raster("your-raster.tif", FUN = raster)
 #' }
 
 import_raster <- function(file, FUN = raster::raster, data_source = flyio_get_datasource(),
                           bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = FALSE, ...){
 
   # checking if the file is valid
-  assert_that(tools::file_ext(file) %in% c("tif", "hdf"), msg = "Please input a valid path")
+  # assert_that(tools::file_ext(file) %in% c("tif", "hdf"), msg = "Please input a valid path")
   if(data_source == "local"){
     t = FUN(file, ...)
     return(t)

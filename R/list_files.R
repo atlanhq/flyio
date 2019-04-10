@@ -13,10 +13,13 @@
 #' @return a vector of full file names
 #' @import "googleCloudStorageR" "aws.s3" "stringr"
 #' @examples
+#' # List files locally
+#' list_files(path = tempdir(), data_source = "local")
 #' \dontrun{
+#' # List files on S3
 #' flyio_set_datasource("s3")
-#' flyio_set_bucket("socialcops-test")
-#' gcsListFiles(path = "tests/", pattern = ".*csv")
+#' flyio_set_bucket("your-bucket-name")
+#' list_files(path = "tests/", pattern = ".*csv")
 #' }
 
 list_files <- function(path = "", pattern = NULL, recursive = FALSE,

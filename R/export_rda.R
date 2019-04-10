@@ -12,9 +12,10 @@
 #' @export "export_rda"
 #' @examples
 #' \dontrun{
+#' # save RDA on Google Cloud Storage
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
-#' export_rda(iris, mtcars, "tests/iris.rda")
+#' flyio_set_bucket("your-bucket-name")
+#' export_rda(iris, mtcars, "rda-on-cloud.rda")
 #' }
 
 export_rda <- function(..., file, FUN = save, data_source = flyio_get_datasource(),
