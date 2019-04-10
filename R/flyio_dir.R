@@ -1,6 +1,7 @@
 #' Set global directory for flyio to store data
-#' @description Set global directory where flyio functions will download intermidiate files
 #'
+#' @description Set global directory where flyio functions will download intermidiate files
+#' @param dir the directory to store intermediate files
 #' @return stores the directory in a global environment under CLOUD_DIR
 #' @export "flyio_set_dir"
 #' @import "assertthat"

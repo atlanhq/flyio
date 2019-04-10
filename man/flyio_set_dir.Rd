@@ -6,6 +6,9 @@
 \usage{
 flyio_set_dir(dir = paste0(tempdir(), "/flyio", Sys.getpid()))
 }
+\arguments{
+\item{dir}{the directory to store intermediate files}
+}
 \value{
 stores the directory in a global environment under CLOUD_DIR
 }
