@@ -13,7 +13,7 @@ the string - directory name
 Get global directory where flyio functions will download intermidiate files
 }
 \details{
-if the directory is not set using flyio_set_dir(), it will returnt he tempdir()
+if the directory is not set using flyio_set_dir(), it will return the paste0(tempdir(),"/flyio")
 }
 \examples{
 flyio_get_dir()

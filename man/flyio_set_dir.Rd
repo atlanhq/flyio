@@ -4,7 +4,7 @@
 \alias{flyio_set_dir}
 \title{Set global directory for flyio to store data}
 \usage{
-flyio_set_dir(dir = tempdir())
+flyio_set_dir(dir = paste0(tempdir(), "/flyio", Sys.getpid()))
 }
 \value{
 stores the directory in a global environment under CLOUD_DIR
