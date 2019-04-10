@@ -18,9 +18,11 @@ vector of bucket names
 List buckets for cloud storage
 }
 \examples{
+# No buckets if data source is local
+list_bucket(data_source = "local")
 \dontrun{
 flyio_set_datasource("s3")
-flyio_auth()
+flyio_auth() # authentication needed for S3
 list_bucket()
 }
 }

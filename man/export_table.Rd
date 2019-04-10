@@ -6,7 +6,8 @@
 \usage{
 export_table(x, file, FUN = write.csv,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{x}{variable name}
@@ -19,6 +20,10 @@ export_table(x, file, FUN = write.csv,
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file to be uploaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -28,9 +33,12 @@ No output
 Write csv, Excel files, txt
 }
 \examples{
+# for data on local
+export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
 \dontrun{
+# for data on cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_table(iris, "tests/iris.csv", write.csv)
+flyio_set_bucket("your-bucket-name")
+export_table(iris, "iris.csv", write.csv)
 }
 }

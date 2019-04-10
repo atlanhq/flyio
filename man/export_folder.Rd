@@ -32,7 +32,7 @@ Write a local folder to the cloud, S3 or GCS
 \examples{
 \dontrun{
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_folder("~/Downloads/", "tests/")
+flyio_set_bucket("your-bucket-name")
+export_folder("folder-local/", "folder-on-cloud/")
 }
 }

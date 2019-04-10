@@ -6,7 +6,8 @@
 \usage{
 export_shp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{obj}{R object to be written}
@@ -21,6 +22,10 @@ export_shp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file to be uploaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -31,8 +36,9 @@ Write shapefiles
 }
 \examples{
 \dontrun{
+# Save shapefile on Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_shp(t, "tests/shptest/", "new", driver = "ESRI Shapefile", overwrite = T)
+flyio_set_bucket("your-bucket-name")
+export_shp(your-shp, "your-shp.shp", driver = "ESRI Shapefile", overwrite = T)
 }
 }

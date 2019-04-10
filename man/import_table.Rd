@@ -6,7 +6,8 @@
 \usage{
 import_table(file, FUN = read.csv,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{file}{path of the file to be read}
@@ -17,6 +18,10 @@ import_table(file, FUN = read.csv,
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -26,9 +31,13 @@ the output of the FUN function
 Read tabular data from anywhere using a function defined by you
 }
 \examples{
+# for data on local
+filepath = system.file("extdata", "mtcars.csv", package = "flyio")
+data = import_table(filepath, data_source = "local")
 \dontrun{
+# for data on cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-import_table("tests/googletest.xlsx", read_excel)
+flyio_set_bucket("your-bucket-name")
+data = import_table("excel-file-on-gcs.xlsx", read_excel)
 }
 }

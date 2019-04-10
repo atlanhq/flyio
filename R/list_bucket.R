@@ -8,9 +8,11 @@
 #' @export "list_bucket"
 #'
 #' @examples
+#' # No buckets if data source is local
+#' list_bucket(data_source = "local")
 #' \dontrun{
 #' flyio_set_datasource("s3")
-#' flyio_auth()
+#' flyio_auth() # authentication needed for S3
 #' list_bucket()
 #' }
 list_bucket <- function(data_source = flyio_get_datasource(), gcs_project = ""){

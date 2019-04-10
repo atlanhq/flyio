@@ -5,7 +5,8 @@
 \title{Read RDA file}
 \usage{
 import_rda(file, FUN = load, data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), envir = globalenv(), ...)
+  bucket = flyio_get_bucket(data_source), envir = globalenv(),
+  dir = flyio_get_dir(), delete_file = TRUE, ...)
 }
 \arguments{
 \item{file}{path of the file to be read}
@@ -18,6 +19,10 @@ import_rda(file, FUN = load, data_source = flyio_get_datasource(),
 
 \item{envir}{the environment in which to import the objects}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -28,8 +33,9 @@ Read RData or rda file from anywhere
 }
 \examples{
 \dontrun{
+# Load RDA from Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-load("tests/googletest.rda")
+flyio_set_bucket("your-bucket-name")
+import_rda("rds-on-cloud.rda")
 }
 }

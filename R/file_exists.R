@@ -8,9 +8,12 @@
 #' @return logical. if the file exists or not
 #'
 #' @examples
+#' # Check with data source local
+#' file_exists(path = "tests/mtcars.csv", data_source = "local")
 #' \dontrun{
+#' # Check with data source GCS
 #' flyio_set_datasource("gcs")
-#' flyio_set_bucket("socialcops-test")
+#' flyio_set_bucket("your-bucket-name")
 #' file_exists(path = "tests/mtcars.csv")
 #' }
 

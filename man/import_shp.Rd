@@ -6,7 +6,8 @@
 \usage{
 import_shp(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{pathshp}{path of the shp file to be read}
@@ -19,6 +20,10 @@ import_shp(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F,
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -29,9 +34,10 @@ Read shapefiles data from anywhere using a function defined by you
 }
 \examples{
 \dontrun{
+# import shapefile from Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-t = import_shp("tests/shptest.shp", FUN = readOGR, dsnlayerbind = F)
-t = import_shp("tests/shptest.shp", FUN = shapefile, dsnlayerbind = T)
+flyio_set_bucket("your-bucket-name")
+t = import_shp("shptest-on-cloud.shp", FUN = readOGR, dsnlayerbind = F)
+t = import_shp("shptest-on-cloud.shp", FUN = raster::shapefile, dsnlayerbind = T)
 }
 }

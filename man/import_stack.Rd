@@ -2,11 +2,12 @@
 % Please edit documentation in R/import_stack.R
 \name{import_stack}
 \alias{import_stack}
-\title{Read stack}
+\title{Read stack from GCS/S3 or local}
 \usage{
 import_stack(pathstack, FUN = raster::stack,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = FALSE, ...)
 }
 \arguments{
 \item{pathstack}{vector of paths of rasters (layers)}
@@ -16,6 +17,10 @@ import_stack(pathstack, FUN = raster::stack,
 \item{data_source}{the name of the data source, if not set globally. s3, gcs or local}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
 
 \item{...}{other parameters for the FUN function defined above}
 }
@@ -27,8 +32,9 @@ Read Stack/Brick data from anywhere using a function defined by you
 }
 \examples{
 \dontrun{
+# Import stack from Google Cloud
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-t = import_shp("tests/shptest/")
+flyio_set_bucket("your-bucket-name")
+t = import_stack("tests/raster-cloud/")
 }
 }

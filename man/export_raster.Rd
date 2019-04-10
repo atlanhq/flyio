@@ -6,7 +6,8 @@
 \usage{
 export_raster(x, file, FUN = raster::writeRaster,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{x}{variable name}
@@ -19,6 +20,10 @@ export_raster(x, file, FUN = raster::writeRaster,
 
 \item{bucket}{the name of the bucket, if not set globally}
 
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file to be uploaded}
+
 \item{...}{other parameters for the FUN function defined above}
 }
 \value{
@@ -30,7 +35,8 @@ Write raster
 \examples{
 \dontrun{
 flyio_set_datasource("gcs")
-flyio_set_bucket("socialcops-test")
-export_raster(t, "tests/testras.tif", writeRaster, format = "GTiff")
+flyio_set_bucket("your-bucket-name")
+r1 <- raster(nrows=108, ncols=21, xmn=0, xmx=10)
+export_raster(r1, "raster-cloud.tif", writeRaster, format = "GTiff")
 }
 }
