@@ -5,6 +5,8 @@
 #' @param dsnlayerbind if the FUN needs dsn and layer binded or not
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param bucket the name of the bucket, if not set globally
+#' @param dir the directory to store intermediate files
+#' @param delete_file logical. to delete the file downloaded
 #' @param ... other parameters for the FUN function defined above
 #' @export "import_shp"
 #' @return the output of the FUN function
@@ -18,7 +20,7 @@
 #' }
 
 import_shp <- function(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F, data_source = flyio_get_datasource(),
-                       bucket = flyio_get_bucket(data_source), ...){
+                       bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, ...){
   filename = basename(pathshp)
   layer = gsub(paste0("\\.",tools::file_ext(pathshp),"$"), "", filename)
   dsn = gsub(paste0(filename,"$"),"", pathshp)
@@ -36,17 +38,17 @@ import_shp <- function(pathshp, FUN = rgdal::readOGR, dsnlayerbind = F, data_sou
   # downloading the file
   for(i in shpfiles){
     # a tempfile with the required extension
-    temp <- paste0(tempdir(), "/", paste0(layer,"."),tools::file_ext(i))
-    on.exit(unlink(temp))
+    temp <- paste0(dir, "/", paste0(layer,"."),tools::file_ext(i))
+    if(isTRUE(delete_file)){on.exit(unlink(temp))}
     # downloading the file
     downlogical = import_file(bucketpath = i, localfile = temp,
                                   data_source = data_source, bucket = bucket, overwrite = T)
   }
   # loading the file to the memory using user defined function
   if(!isTRUE(dsnlayerbind)){
-    result = FUN(tempdir(), layer, ...)
+    result = FUN(dir, layer, ...)
   } else {
-    result = FUN(paste0(tempdir(), "/",layer), ...)
+    result = FUN(paste0(dir, "/",layer), ...)
   }
   return(result)
 }
