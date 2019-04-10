@@ -5,6 +5,8 @@
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param bucket the name of the bucket, if not set globally
 #' @param envir the environment in which to import the objects
+#' @param dir the directory to store intermediate files
+#' @param delete_file logical. to delete the file downloaded
 #' @param ... other parameters for the FUN function defined above
 #' @export "import_rda"
 #' @return the output of the FUN function
@@ -17,7 +19,7 @@
 #' }
 
 import_rda <- function(file, FUN = load, data_source = flyio_get_datasource(),
-                       bucket = flyio_get_bucket(data_source), envir = globalenv(), ...){
+                       bucket = flyio_get_bucket(data_source), envir = globalenv(), dir = flyio_get_dir(), delete_file = TRUE, ...){
 
   # checking if the file is valid
   assert_that(tools::file_ext(file) %in% c("rda", "Rda", "RData"), msg = "Please input a valid path")
@@ -26,8 +28,8 @@ import_rda <- function(file, FUN = load, data_source = flyio_get_datasource(),
     return(t)
   }
   # a tempfile with the required extension
-  temp <- tempfile(fileext = paste0(".",tools::file_ext(file)))
-  on.exit(unlink(temp))
+  temp <- paste0(dir, "/", basename(file))
+  if(isTRUE(delete_file)){on.exit(unlink(temp))}
   # downloading the file
   file = gsub("\\/+","/",file)
   downlogical = import_file(bucketpath = file, localfile = temp, bucket = bucket)

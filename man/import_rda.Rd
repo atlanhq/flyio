@@ -5,7 +5,8 @@
 \title{Read RDA file}
 \usage{
 import_rda(file, FUN = load, data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), envir = globalenv(), ...)
+  bucket = flyio_get_bucket(data_source), envir = globalenv(),
+  dir = flyio_get_dir(), delete_file = TRUE, ...)
 }
 \arguments{
 \item{file}{path of the file to be read}
@@ -17,6 +18,10 @@ import_rda(file, FUN = load, data_source = flyio_get_datasource(),
 \item{bucket}{the name of the bucket, if not set globally}
 
 \item{envir}{the environment in which to import the objects}
+
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file downloaded}
 
 \item{...}{other parameters for the FUN function defined above}
 }
