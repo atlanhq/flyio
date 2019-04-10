@@ -87,13 +87,13 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
   awscreds = readLines("~/.aws/credentials")
   defaultprofile = grep(profile, awscreds)[1]
   if(is.na(defaultprofile)){
-    return(list(aws_access_key_id="",
+    return(c(aws_access_key_id="",
                 aws_secret_access_key=""))
   }
   assign(strsplit(awscreds[defaultprofile+1], " = ")[[1]][1],
          strsplit(awscreds[defaultprofile+1], " = ")[[1]][2])
   assign(strsplit(awscreds[defaultprofile+2], " = ")[[1]][1],
          strsplit(awscreds[defaultprofile+2], " = ")[[1]][2])
-  return(c(aws_access_key_id, aws_secret_access_key))
+  return(c(strsplit(awscreds[defaultprofile+1], " = ")[[1]][1], strsplit(awscreds[defaultprofile+2], " = ")[[1]][1]))
 }
 
