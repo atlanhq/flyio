@@ -21,7 +21,7 @@
 export_raster <- function(x, file, FUN = raster::writeRaster, data_source = flyio_get_datasource(),
                            bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, ...){
   # checking if the file is valid
-  assert_that(tools::file_ext(file) %in% c("tif", "hdf"), msg = "Please input a valid path")
+  #assert_that(tools::file_ext(file) %in% c("tif", "hdf"), msg = "Please input a valid path")
   if(data_source == "local"){
     t = FUN(x, file, ...)
     return(invisible(t))
