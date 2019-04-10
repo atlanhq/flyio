@@ -35,3 +35,32 @@ flyio_get_dir <- function(){
   }
   return(dir)
 }
+
+#' List files in flyio tmp folder
+#' @description Get the list of files downloaded by flyio in the default tmp folder
+#' @return the string - file names
+#' @export "flyio_list_dir"
+#'
+#' @examples
+#' flyio_list_dir()
+flyio_list_dir <- function(){
+  tmpdir = normalizePath(tempdir(), mustWork = FALSE)
+  dir = paste0(tmpdir, "/flyio",Sys.getpid())
+  return(list.files(dir))
+}
+
+#' Delete files in flyio tmp folder
+#' @description Delete the list of files downloaded by flyio in the default tmp folder
+#' @return files deleted
+#' @export "flyio_remove_dir"
+#'
+#' @examples
+#' flyio_remove_dir()
+flyio_remove_dir <- function(){
+  tmpdir = normalizePath(tempdir(), mustWork = FALSE)
+  dir = paste0(tmpdir, "/flyio",Sys.getpid())
+  cat("Deleting", length(flyio_list_dir()), "files...\n")
+  do.call(file.remove, list(list.files(dir, full.names = TRUE)))
+}
+
+
