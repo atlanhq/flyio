@@ -6,7 +6,8 @@
 \usage{
 export_raster(x, file, FUN = raster::writeRaster,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
+  delete_file = TRUE, ...)
 }
 \arguments{
 \item{x}{variable name}
@@ -18,6 +19,10 @@ export_raster(x, file, FUN = raster::writeRaster,
 \item{data_source}{the name of the data source, if not set globally. s3, gcs or local}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{dir}{the directory to store intermediate files}
+
+\item{delete_file}{logical. to delete the file to be uploaded}
 
 \item{...}{other parameters for the FUN function defined above}
 }
