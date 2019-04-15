@@ -59,7 +59,7 @@ flyio_list_dir <- function(){
 flyio_remove_dir <- function(){
   tmpdir = normalizePath(tempdir(), mustWork = FALSE)
   dir = paste0(tmpdir, "/flyio",Sys.getpid())
-  cat("Deleting", length(flyio_list_dir()), "files...\n")
+  message("Deleting ", length(flyio_list_dir()), " files...")
   do.call(file.remove, list(list.files(dir, full.names = TRUE)))
 }
 

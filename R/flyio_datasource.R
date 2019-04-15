@@ -28,7 +28,7 @@ flyio_get_datasource <- function(){
   if(data_source == ""){
     data_source = Sys.getenv("flyioDataSource")
     if(data_source != ""){
-      cat("flyioDataSource env name is depreciated. Please use CLOUD_STORAGE_NAME.")
+      message("flyioDataSource env name is depreciated. Please use CLOUD_STORAGE_NAME.")
     }
   }
   invisible(assert_that(is.string(data_source) && data_source != "", msg = "No data source set. Use flyio_set_datasource to set the data source."))

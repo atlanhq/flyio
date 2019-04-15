@@ -23,7 +23,7 @@ list_bucket <- function(data_source = flyio_get_datasource(), gcs_project = ""){
 
   # if data source is local return
   if(str_to_lower(data_source) == "local"){
-    cat("data_source is set to Local. No buckets.\n")
+    message("data_source is set to Local. No buckets.")
     return(invisible(""))
   }
 

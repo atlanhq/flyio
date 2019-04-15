@@ -22,7 +22,7 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
 
   # if data source is local return
   if(str_to_lower(data_source) == "local"){
-    cat("data_source is set to Local. No authetication required.\n")
+    message("data_source is set to Local. No authetication required.")
     return(invisible(TRUE))
   }
 
@@ -52,13 +52,13 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
   tryCatch({
     tryCatch({
       googleCloudStorageR::gcs_auth(auth_list)
-      cat("GCS Authenticated!\n")
+      message("GCS Authenticated!")
       return(TRUE)
     }, error = function(err){
       options(googleAuthR.scopes.selected = scope)
       Sys.setenv("GCS_AUTH_FILE" =auth_list)
       googleCloudStorageR::gcs_auth()
-      cat("GCS Authenticated!\n")
+      message("GCS Authenticated!")
       return(TRUE)
     })}, error = function(err){
       return(FALSE)
@@ -79,7 +79,7 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
              "AWS_DEFAULT_REGION" = auth_list[3],
              "AWS_SESSION_TOKEN" = auth_list[4])
   tryCatch({invisible(capture.output(t1 <- bucketlist()))
-    cat("AWS S3 Authenticated!\n"); return(TRUE)}, error = function(err){})
+    message("AWS S3 Authenticated!"); return(TRUE)}, error = function(err){})
 
 }
 
