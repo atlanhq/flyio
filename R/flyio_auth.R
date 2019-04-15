@@ -94,6 +94,6 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
          strsplit(awscreds[defaultprofile+1], " = ")[[1]][2])
   assign(strsplit(awscreds[defaultprofile+2], " = ")[[1]][1],
          strsplit(awscreds[defaultprofile+2], " = ")[[1]][2])
-  return(c(strsplit(awscreds[defaultprofile+1], " = ")[[1]][1], strsplit(awscreds[defaultprofile+2], " = ")[[1]][1]))
+  return(c(strsplit(awscreds[defaultprofile+1], " = ")[[1]][2], strsplit(awscreds[defaultprofile+2], " = ")[[1]][2]))
 }
 
