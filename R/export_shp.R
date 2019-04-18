@@ -17,7 +17,7 @@
 #' # Save shapefile on Google Cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' export_shp(your-shp, "your-shp.shp", driver = "ESRI Shapefile", overwrite = T)
+#' export_shp(your-shp, "your-shp.shp", driver = "ESRI Shapefile", overwrite = T, dir = tempdir())
 #' }
 
 

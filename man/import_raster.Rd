@@ -36,6 +36,6 @@ Read raster data from anywhere using a function defined by you
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
 library(raster)
-t = import_raster("your-raster.tif", FUN = raster)
+t = import_raster("your-raster.tif", FUN = raster, dir = tempdir())
 }
 }

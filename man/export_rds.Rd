@@ -37,6 +37,6 @@ Write R data RDS file to anywhere from R
 # save RDS on Google Cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-export_rds(iris, "iris-on-cloud.rds", saveRDS)
+export_rds(iris, "iris-on-cloud.rds", saveRDS, dir = tempdir())
 }
 }

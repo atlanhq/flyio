@@ -34,6 +34,6 @@ Write R data RDA file to anywhere from R
 # save RDA on Google Cloud Storage
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-export_rda(iris, mtcars, "rda-on-cloud.rda")
+export_rda(iris, mtcars, "rda-on-cloud.rda", dir = tempdir())
 }
 }

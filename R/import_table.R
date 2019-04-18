@@ -20,7 +20,7 @@
 #' # for data on cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' data = import_table("excel-file-on-gcs.xlsx", read_excel)
+#' data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
 #' }
 
 import_table <- function(file, FUN = read.csv, data_source = flyio_get_datasource(),

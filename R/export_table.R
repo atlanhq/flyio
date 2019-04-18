@@ -19,7 +19,7 @@
 #' # for data on cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' export_table(iris, "iris.csv", write.csv)
+#' export_table(iris, "iris.csv", write.csv, dir = tempdir())
 #' }
 
 export_table <- function(x, file, FUN = write.csv, data_source = flyio_get_datasource(),

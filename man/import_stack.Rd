@@ -35,6 +35,6 @@ Read Stack/Brick data from anywhere using a function defined by you
 # Import stack from Google Cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-t = import_stack("tests/raster-cloud/")
+t = import_stack("tests/raster-cloud/", dir = tempdir())
 }
 }

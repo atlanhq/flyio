@@ -18,7 +18,7 @@
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
 #' library(raster)
-#' t = import_raster("your-raster.tif", FUN = raster)
+#' t = import_raster("your-raster.tif", FUN = raster, dir = tempdir())
 #' }
 
 import_raster <- function(file, FUN = raster::raster, data_source = flyio_get_datasource(),

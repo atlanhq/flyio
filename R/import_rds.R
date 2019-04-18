@@ -15,7 +15,7 @@
 #' # Import RDS from Google Cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' import_rds("rds-on-cloud.rds", readRDS)
+#' import_rds("rds-on-cloud.rds", readRDS, dir = tempdir())
 #' }
 
 import_rds <- function(file, FUN = readRDS, data_source = flyio_get_datasource(),

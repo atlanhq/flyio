@@ -37,7 +37,7 @@ Read shapefiles data from anywhere using a function defined by you
 # import shapefile from Google Cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-t = import_shp("shptest-on-cloud.shp", FUN = readOGR, dsnlayerbind = F)
-t = import_shp("shptest-on-cloud.shp", FUN = raster::shapefile, dsnlayerbind = T)
+t = import_shp("shptest-on-cloud.shp", FUN = readOGR, dsnlayerbind = F, dir = tempdir())
+t = import_shp("shptest-on-cloud.shp", FUN = raster::shapefile, dsnlayerbind = T, dir = tempdir())
 }
 }

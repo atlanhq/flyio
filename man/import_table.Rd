@@ -38,6 +38,6 @@ data = import_table(filepath, data_source = "local")
 # for data on cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-data = import_table("excel-file-on-gcs.xlsx", read_excel)
+data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
 }
 }

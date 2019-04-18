@@ -39,6 +39,6 @@ export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
 # for data on cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-export_table(iris, "iris.csv", write.csv)
+export_table(iris, "iris.csv", write.csv, dir = tempdir())
 }
 }

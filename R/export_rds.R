@@ -16,7 +16,7 @@
 #' # save RDS on Google Cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' export_rds(iris, "iris-on-cloud.rds", saveRDS)
+#' export_rds(iris, "iris-on-cloud.rds", saveRDS, dir = tempdir())
 #' }
 
 export_rds <- function(x, file, FUN = saveRDS, data_source = flyio_get_datasource(),

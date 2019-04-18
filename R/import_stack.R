@@ -15,7 +15,7 @@
 #' # Import stack from Google Cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' t = import_stack("tests/raster-cloud/")
+#' t = import_stack("tests/raster-cloud/", dir = tempdir())
 #' }
 
 import_stack <- function(pathstack, FUN = raster::stack, data_source = flyio_get_datasource(),
