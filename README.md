@@ -25,6 +25,9 @@ For global usage, the datsource, authentication keys and bucket can be set in th
 ## Installation
 
 ``` r
+# Install the stable version from CRAN:
+install.packages("flyio")
+
 # Install the latest dev version from GitHub:
 install.packages("devtools")
 devtools::install_github("socialcopsdev/flyio")
