@@ -26,8 +26,8 @@ flyio_set_dir <- function(dir = paste0(tempdir(), "/flyio",Sys.getpid())){
 #' flyio_get_dir()
 flyio_get_dir <- function(){
   dir = Sys.getenv("CLOUD_DIR")
+  tmpdir = normalizePath(tempdir(), mustWork = FALSE)
   if(dir == ""){
-    tmpdir = normalizePath(tempdir(), mustWork = FALSE)
     dir = paste0(tmpdir, "/flyio",Sys.getpid())
   }
   if(dir == paste0(tmpdir, "/flyio",Sys.getpid()) & !dir.exists(paste0(tmpdir, "/flyio",Sys.getpid()))){
