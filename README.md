@@ -30,7 +30,7 @@ install.packages("flyio")
 
 # Install the latest dev version from GitHub:
 install.packages("devtools")
-devtools::install_github("socialcopsdev/flyio")
+devtools::install_github("atlanhq/flyio")
 
 # Load the library
 library(flyio)
@@ -48,11 +48,11 @@ flyio_get_datasource()
 
 # Authenticate the default data source and set bucket
 flyio_auth("key.json")
-flyio_set_bucket("socialcops-flyio")
+flyio_set_bucket("atlanhq-flyio")
 
 # Authenticate S3 also
 flyio_auth(c("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION", "AWS_SESSION_TOKEN"), data_source = "s3")
-flyio_set_bucket("socialcops-flyio", data_source = "s3")
+flyio_set_bucket("atlanhq-flyio", data_source = "s3")
 
 # Listing the files in GCS
 list_files(path = "test", pattern = "*csv")
@@ -77,5 +77,5 @@ mtcars <- import_table("test/mtcars.csv", FUN = readr::read_csv)
 <br/><br/>
 
 
-<img src="http://i66.tinypic.com/29vjrjk.png" align="centre" />
+<img src="http://i65.tinypic.com/9h4ajs.png" align="centre" />
 
