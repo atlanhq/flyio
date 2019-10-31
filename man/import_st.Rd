@@ -33,13 +33,10 @@ the output of the FUN function
 Read geospatial data from anywhere using a function defined by you
 }
 \examples{
-# for data on local
-filepath = system.file("extdata", "mtcars.csv", package = "flyio")
-data = import_st(filepath, data_source = "local")
 \dontrun{
 # for data on cloud
 flyio_set_datasource("gcs")
 flyio_set_bucket("your-bucket-name")
-data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
+data = import_table("excel-file-on-gcs.geojson", dir = tempdir())
 }
 }

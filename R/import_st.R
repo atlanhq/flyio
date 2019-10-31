@@ -14,14 +14,11 @@
 #' @return the output of the FUN function
 #'
 #' @examples
-#' # for data on local
-#' filepath = system.file("extdata", "mtcars.csv", package = "flyio")
-#' data = import_st(filepath, data_source = "local")
 #' \dontrun{
 #' # for data on cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
+#' data = import_table("excel-file-on-gcs.geojson", dir = tempdir())
 #' }
 
 import_st <- function(file, FUN = sf::read_sf, data_source = flyio_get_datasource(),
