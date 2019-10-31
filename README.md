@@ -16,8 +16,8 @@ Input and output data from R — download, upload, read and write objects from A
   - `file_exists()`: Check if a file exists in the bucket/folder.
   - `export_[file/folder]()`: Upload a file/folder to S3 or GCS from R.
   - `import_file()`: Download a file from S3 or GCS. 
-  - `import_[table/raster/stack/shp/rds/rda]()`: Read a file from the set data source and bucket from a user-defined function.
-  - `export_[table/raster/shp/rds/rda]()`: Write a file to the set data source and bucket from a user-defined function.
+  - `import_[table/raster/stack/shp/rds/rda/st]()`: Read a file from the set data source and bucket from a user-defined function.
+  - `export_[table/raster/shp/rds/rda/st]()`: Write a file to the set data source and bucket from a user-defined function.
   
 For global usage, the datsource, authentication keys and bucket can be set in the environment variables of the machine so that one does not have to input it every time. 
   - For datasource:`CLOUD_STORAGE_NAME`
