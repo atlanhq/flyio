@@ -16,7 +16,7 @@
 #' @examples
 #' # for data on local
 #' filepath = system.file("extdata", "mtcars.csv", package = "flyio")
-#' data = import_table(filepath, data_source = "local")
+#' data = import_table(filepath, FUN = read.csv, data_source = "local")
 #' \dontrun{
 #' # for data on cloud
 #' flyio_set_datasource("gcs")
@@ -24,7 +24,7 @@
 #' data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
 #' }
 
-import_table <- function(file, FUN = read.csv, data_source = flyio_get_datasource(),
+import_table <- function(file, FUN = data.table::fread, data_source = flyio_get_datasource(),
                          bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
   # checking if the file is valid
   #assert_that(tools::file_ext(file) %in% c("csv", "xlsx", "xls", "txt"), msg = "Please input a valid path")

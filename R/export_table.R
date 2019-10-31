@@ -15,7 +15,7 @@
 #' @export "export_table"
 #' @examples
 #' # for data on local
-#' export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
+#' export_table(iris, paste0(tempdir(), "/iris.csv"), FUN = write.csv, data_source = "local")
 #' \dontrun{
 #' # for data on cloud
 #' flyio_set_datasource("gcs")
@@ -23,7 +23,7 @@
 #' export_table(iris, "iris.csv", write.csv, dir = tempdir())
 #' }
 
-export_table <- function(x, file, FUN = write.csv, data_source = flyio_get_datasource(),
+export_table <- function(x, file, FUN = data.table::fwrite, data_source = flyio_get_datasource(),
                           bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
 
   # checking if the file is valid

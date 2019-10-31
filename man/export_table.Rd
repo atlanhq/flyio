@@ -4,7 +4,7 @@
 \alias{export_table}
 \title{Write csv, Excel files, txt}
 \usage{
-export_table(x, file, FUN = write.csv,
+export_table(x, file, FUN = data.table::fwrite,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
   delete_file = TRUE, show_progress = FALSE, ...)
@@ -36,7 +36,7 @@ Write csv, Excel files, txt
 }
 \examples{
 # for data on local
-export_table(iris, paste0(tempdir(), "/iris.csv"), data_source = "local")
+export_table(iris, paste0(tempdir(), "/iris.csv"), FUN = write.csv, data_source = "local")
 \dontrun{
 # for data on cloud
 flyio_set_datasource("gcs")
