@@ -7,6 +7,7 @@
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param dir the directory to store intermediate files
 #' @param delete_file logical. to delete the file to be uploaded
+#' @param show_progress logical. Shows progress of the upload operation.
 #' @param ... other parameters for the FUN function defined above
 #'
 #' @return if FUN returns anything
@@ -20,7 +21,7 @@
 #' }
 
 export_rds <- function(x, file, FUN = saveRDS, data_source = flyio_get_datasource(),
-                        bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, ...){
+                        bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
   # checking if the file is valid
   assert_that(tools::file_ext(file) %in% c("RDS", "rds"), msg = "Please input a valid path")
   if(data_source == "local"){
@@ -38,7 +39,7 @@ export_rds <- function(x, file, FUN = saveRDS, data_source = flyio_get_datasourc
   file = gsub("\\/+","/",file)
   FUN(x, temp, ...)
   # downloading the file
-  export_file(localfile = temp, bucketpath = file, data_source = data_source, bucket = bucket)
+  export_file(localfile = temp, bucketpath = file, data_source = data_source, bucket = bucket, show_progress = show_progress)
 
 }
 

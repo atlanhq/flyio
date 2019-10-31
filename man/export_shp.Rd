@@ -7,7 +7,7 @@
 export_shp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
-  delete_file = TRUE, ...)
+  delete_file = TRUE, show_progress = FALSE, ...)
 }
 \arguments{
 \item{obj}{R object to be written}
@@ -25,6 +25,8 @@ export_shp(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F,
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file to be uploaded}
+
+\item{show_progress}{logical. Shows progress of the upload operation.}
 
 \item{...}{other parameters for the FUN function defined above}
 }

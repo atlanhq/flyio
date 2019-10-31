@@ -6,6 +6,7 @@
 #' @param bucketpath path of the folder in which the files are to be uploaded
 #' @param data_source the name of the data source, if not set globally. can be gcs or s3
 #' @param bucket the name of the bucket, if not set globally
+#' @param show_progress logical. Shows progress of the upload operation.
 #' @param ... other parameters for gcs/s3 upload
 #'
 #' @export "export_folder"
@@ -19,7 +20,7 @@
 #' }
 
 export_folder <- function(localfolder, bucketpath, pattern = "*", overwrite = TRUE, data_source = flyio_get_datasource(),
-                          bucket = flyio_get_bucket(data_source), ...){
+                          bucket = flyio_get_bucket(data_source), show_progress = FALSE, ...){
   # Starting data checks --
   ## valid inputs
   assert_that(is.character(localfolder),
@@ -67,7 +68,7 @@ export_folder <- function(localfolder, bucketpath, pattern = "*", overwrite = TR
     if(data_source == "gcs"){
       upload_return = gcs_upload(file = file_upload[i], name = paste0(bucketpath,"/", basename(file_upload[i])), bucket = bucket, ...)
     } else if(data_source == "s3"){
-      upload_return = aws.s3::put_object(file = file_upload[i], bucket = bucket, object =  paste0(bucketpath,"/", basename(file_upload[i])), ...)
+      upload_return = aws.s3::put_object(file = file_upload[i], bucket = bucket, object =  paste0(bucketpath,"/", basename(file_upload[i])), show_progress = show_progress, ...)
     }
     setTxtProgressBar(pb, i)
   }

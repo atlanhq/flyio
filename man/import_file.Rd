@@ -5,7 +5,8 @@
 \title{Download file from cloud to local system}
 \usage{
 import_file(bucketpath, localfile, data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), overwrite = TRUE, ...)
+  bucket = flyio_get_bucket(data_source), overwrite = TRUE,
+  show_progress = FALSE, ...)
 }
 \arguments{
 \item{bucketpath}{path of file in the bucket}
@@ -17,6 +18,8 @@ import_file(bucketpath, localfile, data_source = flyio_get_datasource(),
 \item{bucket}{the name of the bucket, if not set globally}
 
 \item{overwrite}{logical. If the files should be overwritten if already present}
+
+\item{show_progress}{logical. Shows progress of the download operation}
 
 \item{...}{other parameters for gcs_get_object or save_object}
 }

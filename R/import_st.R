@@ -1,42 +1,42 @@
-#' Read raster files
+#' Read geojson, geopkg
+#' @description Read geospatial data from anywhere using a function defined by you
 #'
-#' @description Read raster data from anywhere using a function defined by you
 #' @param file path of the file to be read
 #' @param FUN the function using which the file is to be read
 #' @param data_source the name of the data source, if not set globally. s3, gcs or local
 #' @param bucket the name of the bucket, if not set globally
 #' @param dir the directory to store intermediate files
 #' @param delete_file logical. to delete the file downloaded
-#' @param show_progress logical. Shows progress of the download operation
+#' @param show_progress logical. Shows the progress of the download operation
 #' @param ... other parameters for the FUN function defined above
 #'
-#' @export "import_raster"
+#' @export "import_st"
 #' @return the output of the FUN function
 #'
 #' @examples
+#' # for data on local
+#' filepath = system.file("extdata", "mtcars.csv", package = "flyio")
+#' data = import_st(filepath, data_source = "local")
 #' \dontrun{
-#' # when data source is cloud
+#' # for data on cloud
 #' flyio_set_datasource("gcs")
 #' flyio_set_bucket("your-bucket-name")
-#' library(raster)
-#' t = import_raster("your-raster.tif", FUN = raster, dir = tempdir())
+#' data = import_table("excel-file-on-gcs.xlsx", read_excel, dir = tempdir())
 #' }
 
-import_raster <- function(file, FUN = raster::raster, data_source = flyio_get_datasource(),
-                          bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = FALSE, show_progress = FALSE, ...){
-
+import_st <- function(file, FUN = sf::read_sf, data_source = flyio_get_datasource(),
+                         bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
   # checking if the file is valid
-  # assert_that(tools::file_ext(file) %in% c("tif", "hdf"), msg = "Please input a valid path")
   if(data_source == "local"){
     t = FUN(file, ...)
     return(t)
   }
   # a tempfile with the required extension
   temp <- paste0(dir, "/", basename(file))
-  if(isTRUE(delete_file)){on.exit(unlink(temp))}  #  on.exit(unlink(temp))
+  if(isTRUE(delete_file)){on.exit(unlink(temp))}
   # downloading the file
   file = gsub("\\/+","/",file)
-  downlogical = import_file(bucketpath = file, localfile = temp, bucket = bucket, show_progress = show_progress)
+  downlogical = import_file(bucketpath = file, localfile = temp, data_source = data_source, bucket = bucket, show_progress = show_progress)
   assert_that(is.character(downlogical), msg = "Downloading of file failed")
   # loading the file to the memory using user defined function
   result = FUN(temp, ...)

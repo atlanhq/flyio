@@ -7,7 +7,7 @@
 export_raster(x, file, FUN = raster::writeRaster,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
-  delete_file = TRUE, ...)
+  delete_file = TRUE, show_progress = FALSE, ...)
 }
 \arguments{
 \item{x}{variable name}
@@ -23,6 +23,8 @@ export_raster(x, file, FUN = raster::writeRaster,
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file to be uploaded}
+
+\item{show_progress}{logical. Shows progress of the upload operation.}
 
 \item{...}{other parameters for the FUN function defined above}
 }

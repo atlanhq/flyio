@@ -7,7 +7,7 @@
 import_raster(file, FUN = raster::raster,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
-  delete_file = FALSE, ...)
+  delete_file = FALSE, show_progress = FALSE, ...)
 }
 \arguments{
 \item{file}{path of the file to be read}
@@ -21,6 +21,8 @@ import_raster(file, FUN = raster::raster,
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file downloaded}
+
+\item{show_progress}{logical. Shows progress of the download operation}
 
 \item{...}{other parameters for the FUN function defined above}
 }

@@ -6,6 +6,7 @@
 #' @param data_source the name of the data source, if not set globally, gcs or s3
 #' @param bucket the name of the bucket, if not set globally
 #' @param overwrite logical. If the files should be overwritten if already present
+#' @param show_progress logical. Shows progress of the download operation
 #' @param ... other parameters for gcs_get_object or save_object
 #'
 #' @return the filename and path of the object saved to local
@@ -20,7 +21,7 @@
 #' }
 
 import_file <- function(bucketpath, localfile, data_source = flyio_get_datasource(),
-                            bucket = flyio_get_bucket(data_source),  overwrite = TRUE, ...){
+                            bucket = flyio_get_bucket(data_source),  overwrite = TRUE, show_progress = FALSE, ...){
   # Starting data checks --
   ## valid inputs
   assert_that(is.character(localfile),
@@ -50,7 +51,7 @@ import_file <- function(bucketpath, localfile, data_source = flyio_get_datasourc
   if(data_source == "gcs"){
     save_file = gcs_get_object(object_name = bucketpath,bucket = bucket, saveToDisk = localfile, overwrite = overwrite, ...)
   } else if(data_source == "s3"){
-    save_file = aws.s3::save_object(object = bucketpath, bucket = bucket, file = localfile, overwrite = overwrite, check_region = FALSE, ...)
+    save_file = aws.s3::save_object(object = bucketpath, bucket = bucket, file = localfile, overwrite = overwrite, check_region = FALSE, show_progress = show_progress, ...)
   }
   return(invisible(localfile))
 }

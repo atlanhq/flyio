@@ -8,6 +8,7 @@
 #' @param bucket the name of the bucket, if not set globally
 #' @param dir the directory to store intermediate files
 #' @param delete_file logical. to delete the file to be uploaded
+#' @param show_progress logical. Shows progress of the upload operation.
 #' @param ... other parameters for the FUN function defined above
 #' @export "export_shp"
 #' @return output of the FUN function if any
@@ -22,7 +23,7 @@
 
 
 export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, data_source = flyio_get_datasource(),
-                        bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, ...){
+                        bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
   filename = basename(pathshp)
   layer = gsub(paste0("\\.",tools::file_ext(pathshp),"$"), "", filename)
   dsn = gsub(paste0(filename,"$"),"", pathshp)
@@ -59,7 +60,7 @@ export_shp <- function(obj, pathshp, FUN = rgdal::writeOGR, dsnlayerbind = F, da
     # uploading the file
     dsnlayer_i = gsub(paste0("\\.",tools::file_ext(dsnlayer),"$"), "", dsnlayer)
     downlogical = export_file(localfile = temp, bucketpath = paste0(dsnlayer_i, ".", tools::file_ext(i)),
-                                bucket = bucket, data_source = data_source)
+                                bucket = bucket, data_source = data_source, show_progress = show_progress)
   }
 }
 

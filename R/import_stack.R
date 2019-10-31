@@ -6,6 +6,7 @@
 #' @param bucket the name of the bucket, if not set globally
 #' @param dir the directory to store intermediate files
 #' @param delete_file logical. to delete the file downloaded
+#' @param show_progress logical. Shows progress of the download operation
 #' @param ... other parameters for the FUN function defined above
 #' @export "import_stack"
 #' @return the output of the FUN function
@@ -19,7 +20,7 @@
 #' }
 
 import_stack <- function(pathstack, FUN = raster::stack, data_source = flyio_get_datasource(),
-                       bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = FALSE, ...){
+                       bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = FALSE, show_progress = FALSE, ...){
 
 
   if(data_source == "local"){
@@ -33,7 +34,7 @@ import_stack <- function(pathstack, FUN = raster::stack, data_source = flyio_get
     if(isTRUE(delete_file)){on.exit(unlink(temp))}
     # downloading the file
     downlogical = import_file(bucketpath = i, localfile = temp,
-                              data_source = data_source, bucket = bucket, overwrite = T)
+                              data_source = data_source, bucket = bucket, overwrite = T, show_progress = show_progress)
   }
   # loading the file to the memory using user defined function
   result = FUN(paste0(dir, "/",basename(pathstack)), ...)

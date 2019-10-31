@@ -6,7 +6,8 @@
 \usage{
 import_rda(file, FUN = load, data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), envir = globalenv(),
-  dir = flyio_get_dir(), delete_file = TRUE, ...)
+  dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE,
+  ...)
 }
 \arguments{
 \item{file}{path of the file to be read}
@@ -22,6 +23,8 @@ import_rda(file, FUN = load, data_source = flyio_get_datasource(),
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file downloaded}
+
+\item{show_progress}{logical. Shows progress of the download operation}
 
 \item{...}{other parameters for the FUN function defined above}
 }

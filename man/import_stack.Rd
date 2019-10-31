@@ -7,7 +7,7 @@
 import_stack(pathstack, FUN = raster::stack,
   data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
-  delete_file = FALSE, ...)
+  delete_file = FALSE, show_progress = FALSE, ...)
 }
 \arguments{
 \item{pathstack}{vector of paths of rasters (layers)}
@@ -21,6 +21,8 @@ import_stack(pathstack, FUN = raster::stack,
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file downloaded}
+
+\item{show_progress}{logical. Shows progress of the download operation}
 
 \item{...}{other parameters for the FUN function defined above}
 }

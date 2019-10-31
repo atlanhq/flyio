@@ -5,7 +5,7 @@
 \title{Upload a file from the local system to cloud}
 \usage{
 export_file(localfile, bucketpath, data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), show_progress = FALSE, ...)
 }
 \arguments{
 \item{localfile}{path of the file to be uploaded}
@@ -15,6 +15,8 @@ export_file(localfile, bucketpath, data_source = flyio_get_datasource(),
 \item{data_source}{the name of the data source, if not set globally. gcs or s3}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{show_progress}{logical. Shows progress of the upload operation.}
 
 \item{...}{other parameters for gcs_upload or aws.s3::put_object}
 }

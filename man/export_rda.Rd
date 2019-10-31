@@ -6,7 +6,7 @@
 \usage{
 export_rda(..., file, FUN = save, data_source = flyio_get_datasource(),
   bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(),
-  delete_file = TRUE)
+  delete_file = TRUE, show_progress = FALSE)
 }
 \arguments{
 \item{...}{R ojects need to be saved}
@@ -22,6 +22,8 @@ export_rda(..., file, FUN = save, data_source = flyio_get_datasource(),
 \item{dir}{the directory to store intermediate files}
 
 \item{delete_file}{logical. to delete the file to be uploaded}
+
+\item{show_progress}{logical. Shows progress of the upload operation.}
 }
 \value{
 No output

@@ -4,6 +4,7 @@
 #' @param bucketpath path where the file needs to be uploaded, the file name can or cannot be present
 #' @param data_source the name of the data source, if not set globally. gcs or s3
 #' @param bucket the name of the bucket, if not set globally
+#' @param show_progress logical. Shows progress of the upload operation.
 #' @param ... other parameters for gcs_upload or aws.s3::put_object
 #'
 #' @export "export_file"
@@ -17,7 +18,7 @@
 #' }
 
 export_file <- function(localfile, bucketpath, data_source = flyio_get_datasource(),
-                          bucket = flyio_get_bucket(data_source), ...){
+                          bucket = flyio_get_bucket(data_source), show_progress = FALSE, ...){
   # Starting data checks --
   ## valid inputs
   ## valid inputs
@@ -50,7 +51,7 @@ export_file <- function(localfile, bucketpath, data_source = flyio_get_datasourc
     if(is.null(l$multipart)){
       upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, multipart = TRUE, check_region = FALSE, ...)
     } else{
-      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, check_region = FALSE, ...)
+      upload_return = aws.s3::put_object(file = localfile, bucket = bucket, object =  bucketpath, check_region = FALSE, show_progress = show_progress, ...)
     }
 
   }

@@ -1,12 +1,12 @@
 Package: flyio
 Type: Package
 Title: Read or Write any Format from Anywhere
-Version: 0.1.3
+Version: 0.1.4
 Author: Himanshu Sikaria [aut, cre]
-Maintainer: Himanshu Sikaria <himanshu.sikaria@socialcops.com>
+Maintainer: Himanshu Sikaria <himanshu@atlan.com>
 Description: Perform input, output of files in R from data sources like Google Cloud Storage ('GCS') <https://cloud.google.com/storage/>, Amazon Web Services ('AWS S3') <https://aws.amazon.com/s3> or local drive.
-URL: https://github.com/socialcopsdev/flyio
-BugReports: https://github.com/socialcopsdev/flyio/issues
+URL: https://github.com/atlanhq/flyio
+BugReports: https://github.com/atlanhq/flyio/issues
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

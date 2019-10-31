@@ -6,6 +6,7 @@
 #' @param bucket the name of the bucket, if not set globally
 #' @param dir the directory to store intermediate files
 #' @param delete_file logical. to delete the file downloaded
+#' @param show_progress logical. Shows progress of the download operation
 #' @param ... other parameters for the FUN function defined above
 #' @export "import_rds"
 #' @return the output of the FUN function
@@ -19,7 +20,7 @@
 #' }
 
 import_rds <- function(file, FUN = readRDS, data_source = flyio_get_datasource(),
-                       bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, ...){
+                       bucket = flyio_get_bucket(data_source), dir = flyio_get_dir(), delete_file = TRUE, show_progress = FALSE, ...){
 
   # checking if the file is valid
   assert_that(tools::file_ext(file) %in% c("RDS", "rds"), msg = "Please input a valid path")
@@ -32,7 +33,7 @@ import_rds <- function(file, FUN = readRDS, data_source = flyio_get_datasource()
   if(isTRUE(delete_file)){on.exit(unlink(temp))}
   # downloading the file
   file = gsub("\\/+","/",file)
-  downlogical = import_file(bucketpath = file, localfile = temp, bucket = bucket)
+  downlogical = import_file(bucketpath = file, localfile = temp, bucket = bucket, show_progress = show_progress)
   assert_that(is.character(downlogical), msg = "Downloading of file failed")
   # loading the file to the memory using user defined function
   result = FUN(temp, ...)

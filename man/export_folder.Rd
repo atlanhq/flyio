@@ -6,7 +6,7 @@
 \usage{
 export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
   data_source = flyio_get_datasource(),
-  bucket = flyio_get_bucket(data_source), ...)
+  bucket = flyio_get_bucket(data_source), show_progress = FALSE, ...)
 }
 \arguments{
 \item{localfolder}{path of the folder in which all the files are to be uploaded}
@@ -20,6 +20,8 @@ export_folder(localfolder, bucketpath, pattern = "*", overwrite = TRUE,
 \item{data_source}{the name of the data source, if not set globally. can be gcs or s3}
 
 \item{bucket}{the name of the bucket, if not set globally}
+
+\item{show_progress}{logical. Shows progress of the upload operation.}
 
 \item{...}{other parameters for gcs/s3 upload}
 }
