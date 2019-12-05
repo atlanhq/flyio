@@ -29,7 +29,7 @@ export_raster <- function(x, file, FUN = raster::writeRaster, data_source = flyi
   }
   # a tempfile with the required extension
   if(isTRUE(delete_file)){
-    temp <- tempfile(fileext = paste0(".",tools::file_ext(file)), tmpdir = dir)
+    temp <- paste0(dir, "/", basename(file))
     on.exit(unlink(temp))
   } else {
     temp <- paste0(dir, "/", basename(file))

@@ -32,7 +32,7 @@ export_st <- function(x, file, FUN = sf::write_sf, data_source = flyio_get_datas
   }
   # a tempfile with the required extension
   if(isTRUE(delete_file)){
-    temp <- tempfile(fileext = paste0(".",tools::file_ext(file)), tmpdir = dir)
+    temp <- paste0(dir, "/", basename(file))
     on.exit(unlink(temp))
   } else {
     temp <- paste0(dir, "/", basename(file))
