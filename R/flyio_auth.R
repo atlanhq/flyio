@@ -85,15 +85,28 @@ flyio_auth <- function(auth_list = "", data_source = flyio_get_datasource(),
 
 .awscred_profile <- function(profile = "default"){
   awscreds = readLines("~/.aws/credentials")
-  defaultprofile = grep(profile, awscreds)[1]
+  defaultprofile = which(awscreds == paste0("[",profile,"]"))[1]
   if(is.na(defaultprofile)){
     return(c(aws_access_key_id="",
                 aws_secret_access_key=""))
   }
-  assign(strsplit(awscreds[defaultprofile+1], " = ")[[1]][1],
-         strsplit(awscreds[defaultprofile+1], " = ")[[1]][2])
-  assign(strsplit(awscreds[defaultprofile+2], " = ")[[1]][1],
-         strsplit(awscreds[defaultprofile+2], " = ")[[1]][2])
-  return(c(strsplit(awscreds[defaultprofile+1], " = ")[[1]][2], strsplit(awscreds[defaultprofile+2], " = ")[[1]][2]))
+
+  aws_access_key_id = strsplit(awscreds[defaultprofile+1], " = ")[[1]][2]
+  aws_secret_access_key = strsplit(awscreds[defaultprofile+2], " = ")[[1]][2]
+  awsregion = readLines("~/.aws/config")
+  defaultregion = which(awsregion == paste0("[profile ",profile,"]"))[1]
+  if(profile=="default"){
+    defaultregion = which(awsregion == "[default]")
+  }
+  if(is.na(defaultregion)){
+    return(c(aws_access_key_id, aws_secret_access_key))
+  }
+    if(!(grepl("\\[",awsregion[defaultregion+1]) | length(awsregion) < (defaultregion+1))){
+      region = strsplit(awsregion[defaultregion+1], " = ")[[1]][2]
+      return(c(aws_access_key_id, aws_secret_access_key, region))
+    } else{
+      return(c(aws_access_key_id, aws_secret_access_key))
+    }
+
 }
 
