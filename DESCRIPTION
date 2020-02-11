@@ -16,6 +16,6 @@ Imports:
     stringr,
     assertthat,
     googleCloudStorageR,
-    aws.s3,
     utils,
     tools
+Remotes: cloudyr/aws.s3
